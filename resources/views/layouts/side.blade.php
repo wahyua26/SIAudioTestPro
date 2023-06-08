@@ -1,8 +1,8 @@
-<aside class="main-sidebar sidebar-dark-primary elevation-4 bg-blue">
+<aside class="main-sidebar sidebar-light-primary elevation-4 bg-blue">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
       <img src="{{ asset('AdminLTE/dist/img/logo7.png') }}" alt="SIATP Logo" class="brand-image" style="opacity: 1">
-      <span>
+      <span class="span">
         SIATP
       </span>
     </a>
@@ -61,38 +61,34 @@
           </li> --}}
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-clock"></i>
-              <p>Presensi</p>
+              <i class="nav-icon fas fa-scroll "></i>
+              <p class="text-dark">Hasil Audiometri</p>
             </a>
           </li>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-scroll"></i>
+              <i class="nav-icon fas fa-table"></i>
               <p>
-                Laporan
+                Data Master
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="#" class="nav-link">
-                  <i class="fas fa-file-contract"></i>
-                  <p>Presensi Per Karyawan</p>
+                  <i class="fas fa-users"></i>
+                  <p>Data Pegawai</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
-                  <i class="fas fa-file-contract"></i>
-                  <p>Presensi Keseluruhan</p>
+                  <i class="fas fa-building"></i>
+                  <p>Data Ruang Kerja</p>
                 </a>
               </li>
             </ul>
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="fas fa-users"></i>
-            <p>Karyawan</p>
-          </a>
-        </li>
+          </li>
+          <br>
         <li class="nav-item">
           <a href="#" class="nav-link">
             <i class="fas fa-sign-out-alt"></i>
