@@ -90,9 +90,9 @@
           </li>
           <br>
         <li class="nav-item">
-          <a href="#" class="nav-link">
+          <a href="{{ route('logout') }}" class="nav-link">
             <i class="fas fa-sign-out-alt"></i>
-            <p>Logout</p>
+            <p>Keluar</p>
           </a>
         </li>
       </nav>
