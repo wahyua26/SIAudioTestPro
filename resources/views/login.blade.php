@@ -65,7 +65,7 @@
       <div class="container-fluid h-custom">
         <div class="row d-flex justify-content-center align-items-center h-100">
           <div class="col-md-9 col-lg-6 col-xl-5">
-            <img src="{{ asset('AdminLTE/dist/img/Picture1.png') }}"
+            <img class="img-circle elevation-5" src="{{ asset('AdminLTE/dist/img/Picture1.png') }}"
               class="img-fluid" alt="Sample image">
           </div>
           <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
@@ -76,7 +76,7 @@
               <div class="form-outline mb-4">
                 <label class="form-label" for="form3Example3">Email</label>
                 <input type="email" name="email" id="email" class="form-control form-control-lg"
-                  placeholder="budipratama@gmail.com" autofocus required/>
+                  placeholder="email@example.com" autofocus required/>
               </div>
     
               <!-- Password input -->

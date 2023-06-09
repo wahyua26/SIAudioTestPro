@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\MasterDataController;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 
@@ -19,10 +20,13 @@ Route::get('/', function () {
     return view('login');
 });
 
-Route::get('/home', function () {
-    return view('home');
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/home', function () { return view('home'); })->name('home');
+    Route::get('/pegawai', [MasterDataController::class,'pegawai'])->name('pegawai');
 });
 
 Route::get('/login', [LoginController::class,'index'])->name('login');
 Route::post('/login', [LoginController::class,'authenticate'])->name('authenticate');
 Route::get('/logout', [LoginController::class,'logout'])->name('logout');
+
