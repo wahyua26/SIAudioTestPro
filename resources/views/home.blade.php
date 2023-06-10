@@ -149,7 +149,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="icon">
               <i class="nav-icon fas fa-scroll"></i>
             </div>
-            <a href="#" class="small-box-footer text-white">More info <i class="fas fa-arrow-circle-right"></i></a>
+            <a href="{{ route('audiometri') }}" class="small-box-footer text-white">More info <i class="fas fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <div class="col-lg-3">
@@ -161,7 +161,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="icon">
               <i class="nav-icon fas fa-table"></i>
             </div>
-            <a href="#" class="small-box-footer text-white">More info <i class="fas fa-arrow-circle-right"></i></a>
+            <a href="{{ route('menu') }}" class="small-box-footer text-white">More info <i class="fas fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <div class="col"></div>

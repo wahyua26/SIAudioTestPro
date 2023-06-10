@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AudiometriController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MasterDataController;
 use GuzzleHttp\Middleware;
@@ -23,7 +24,10 @@ Route::get('/', function () {
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', function () { return view('home'); })->name('home');
+    Route::get('/menu', [MasterDataController::class,'menu'])->name('menu');
     Route::get('/pegawai', [MasterDataController::class,'pegawai'])->name('pegawai');
+    Route::get('/ruang-kerja', [MasterDataController::class,'ruang'])->name('ruang');
+    Route::get('/audiometri', [AudiometriController::class,'index'])->name('audiometri');
 });
 
 Route::get('/login', [LoginController::class,'index'])->name('login');

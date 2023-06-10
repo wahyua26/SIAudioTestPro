@@ -1,6 +1,6 @@
 <aside class="main-sidebar sidebar-light-primary elevation-4 bg-blue">
     <!-- Brand Logo -->
-    <a href="#" class="brand-link">
+    <a href="{{ route('home') }}" class="brand-link">
       <img src="{{ asset('AdminLTE/dist/img/logo7.png') }}" alt="SIATP Logo" class="brand-image" style="opacity: 1">
       <span class="span">
         SIATP
@@ -60,7 +60,7 @@
             </ul>
           </li> --}}
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{ route('audiometri') }}" class="nav-link">
               <i class="nav-icon fas fa-scroll "></i>
               <p class="text-dark">Hasil Audiometri</p>
             </a>
@@ -75,13 +75,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('pegawai') }}" class="nav-link">
                   <i class="fas fa-users"></i>
                   <p>Data Pegawai</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('ruang') }}" class="nav-link">
                   <i class="fas fa-building"></i>
                   <p>Data Ruang Kerja</p>
                 </a>

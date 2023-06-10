@@ -42,4 +42,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+    
+    public function audiometri(){
+        return $this->hasMany(Audiometri::class);
+    }
+
+    public function workspace(){
+        return $this->belongsTo(Workspace::class, 'workspace_id');
+    }
 }

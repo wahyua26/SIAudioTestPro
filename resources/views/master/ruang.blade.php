@@ -6,7 +6,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 -->
 <html lang="en">
 <head>
-    <title>Data Pegawai</title>
+    <title>Data Ruang Kerja</title>
     @include('layouts.head')
     <style>
       th {
@@ -72,7 +72,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm">
-            <h1 class="m-0 font-weight-bold">DATA PEGAWAI</h1>
+            <h1 class="m-0 font-weight-bold">DATA RUANG KERJA</h1>
           </div><!-- /.col -->
           <div class="col-sm">
             {{-- <ol class="breadcrumb float-sm-right">
@@ -91,22 +91,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <div class="col">
           <table class="table table-striped projects text-center">
             <tr>
-                <th>Nama Lengkap</th>
-                <th>Email</th>
-                <th>Tanggal Lahir</th>
-                <th>Jabatan</th>
-                <th>Ruang Kerja</th>
-                <th>Status</th>
+                <th>ID</th>
+                <th>Nama Ruangan</th>
+                <th>Lokasi</th>
+                <th>Tingkat Kebisingan</th>
                 <th>Aksi</th>
             </tr> 
-            @foreach ($pegawai as $item)
+            @foreach ($ruang as $item)
             <tr>
-                <td>{{ $item->name }}</td>
-                <td>{{ $item->email }}</td>
-                <td>{{ $item->tglLahir }}</td>
-                <td>{{ $item->jabatan }}</td>
+                <td>{{ $item->id }}</td>
                 <td>{{ $item->nama }}</td>
-                <td>{{ $item->status }}</td>
+                <td>{{ $item->lokasi }}</td>
+                <td>{{ $item->bising }}</td>
                 <td class="project-actions text-center">
                   <a href="#" class="btn btn-info btn-sm" href="#">
                       <i class="fas fa-pencil-alt">
