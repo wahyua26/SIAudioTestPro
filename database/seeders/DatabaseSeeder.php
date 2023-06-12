@@ -18,8 +18,8 @@ class DatabaseSeeder extends Seeder
             'name' => 'Budi Pratama',
             'email' => 'budipratama@example.com',
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-            'jabatan' => 'Manajer Produksi',
             'status' => 'admin',
+            'jabatan_id' => 4,
         ]);
 
         \App\Models\Workspace::factory()->create([
@@ -28,6 +28,26 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\Workspace::factory()->create([
             'nama' => 'Ruang Distribusi',
+        ]);
+
+        \App\Models\Jabatan::factory()->create([
+            'jabatan' => 'Staff Distribusi',
+            'divisi' => 'Distribution'
+        ]);
+
+        \App\Models\Jabatan::factory()->create([
+            'jabatan' => 'Manajer Distribusi',
+            'divisi' => 'Distribution'
+        ]);
+
+        \App\Models\Jabatan::factory()->create([
+            'jabatan' => 'Staff Produksi',
+            'divisi' => 'Production'
+        ]);
+
+        \App\Models\Jabatan::factory()->create([
+            'jabatan' => 'Manajer Produksi',
+            'divisi' => 'Production'
         ]);
 
         \App\Models\Audiometri::factory()->create([

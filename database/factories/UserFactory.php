@@ -19,12 +19,12 @@ class UserFactory extends Factory
     {
         return [
             'workspace_id' => fake()->numberBetween(1,2),
+            'jabatan_id' => fake()->numberBetween(1,4),
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'tglLahir' => fake()->date(),
-            'jabatan' => 'Staff Produksi',
             'status' => 'pegawai',
             'remember_token' => Str::random(10),
         ];

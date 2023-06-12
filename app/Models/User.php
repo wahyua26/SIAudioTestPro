@@ -21,6 +21,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'workspace_id',
+        'jabatan_id',
+        'tglLahir',
+        'status',
     ];
 
     /**
@@ -49,5 +53,9 @@ class User extends Authenticatable
 
     public function workspace(){
         return $this->belongsTo(Workspace::class, 'workspace_id');
+    }
+
+    public function jabatan(){
+        return $this->belongsTo(Jabatan::class, 'jabatan_id');
     }
 }

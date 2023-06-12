@@ -3,6 +3,7 @@
 use App\Http\Controllers\AudiometriController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MasterDataController;
+use App\Http\Controllers\UserController;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 
@@ -27,7 +28,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/menu', [MasterDataController::class,'menu'])->name('menu');
     Route::get('/pegawai', [MasterDataController::class,'pegawai'])->name('pegawai');
     Route::get('/ruang-kerja', [MasterDataController::class,'ruang'])->name('ruang');
+    Route::get('/jabatan', [MasterDataController::class,'jabatan'])->name('jabatan');
     Route::get('/audiometri', [AudiometriController::class,'index'])->name('audiometri');
+    Route::get('/tambah-pegawai', [UserController::class,'tambahPegawai'])->name('tambah-pegawai');
+    Route::get('/edit-pegawai/{id}', [UserController::class,'editPegawai'])->name('edit-pegawai');
+    Route::post('/update-pegawai', [UserController::class,'updatePegawai'])->name('update-pegawai');
+    Route::get('/hapus-pegawai/{id}', [UserController::class,'hapusPegawai'])->name('hapus-pegawai');
+    Route::post('/pegawai', [UserController::class,'store'])->name('store-pegawai');
 });
 
 Route::get('/login', [LoginController::class,'index'])->name('login');

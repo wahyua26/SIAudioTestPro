@@ -87,8 +87,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <!-- Main content -->
     <div class="content">
-      <div class="row">
-        <div class="col">
+      <div class="col">
+        <div class="row">
+          <div class="col"></div>
+          <div class="col"></div>
+          <div class="col"></div>
+          <div class="col"></div>
+          <div class="col">
+            <div class="card">
+              <a href="{{ route('tambah-pegawai') }}" class="btn btn-primary"><i class="fas fa-user-plus"></i> Tambah Pegawai</a>
+            </div>
+          </div>
+        </div>
+        <div class="row">
           <table class="table table-striped projects text-center">
             <tr>
                 <th>Nama Lengkap</th>
@@ -108,12 +119,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <td>{{ $item->nama }}</td>
                 <td>{{ $item->status }}</td>
                 <td class="project-actions text-center">
-                  <a href="#" class="btn btn-info btn-sm" href="#">
+                  <a href="/edit-pegawai/{{ $item->id }}" class="btn btn-info btn-sm">
                       <i class="fas fa-pencil-alt">
                       </i>
                       Edit
                   </a>
-                  <a onclick="return confirm('Apakah anda yakin?')" href="#" class="btn btn-danger btn-sm" href="#">
+                  <a onclick="return confirm('Apakah anda yakin?')" href="/hapus-pegawai/{{ $item->id }}" class="btn btn-danger btn-sm" href="#">
                       <i class="fas fa-trash">
                       </i>
                       Delete

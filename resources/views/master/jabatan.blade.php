@@ -6,8 +6,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
 -->
 <html lang="en">
 <head>
-    <title>Data Master</title>
+    <title>Data Jabatan</title>
     @include('layouts.head')
+    <style>
+      th {
+        text-align: center;
+      }
+    </style>
 </head>
 <body class="hold-transition sidebar-mini">
             @if(Session::has('success'))
@@ -67,7 +72,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm">
-            <h1 class="m-0 font-weight-bold">DATA MASTER</h1>
+            <h1 class="m-0 font-weight-bold">DATA POSISI PEGAWAI</h1>
           </div><!-- /.col -->
           <div class="col-sm">
             {{-- <ol class="breadcrumb float-sm-right">
@@ -83,44 +88,37 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Main content -->
     <div class="content">
       <div class="row">
-        <div class="col"></div>
-        <div class="col-lg-3">
-          <div class="small-box text-white">
-            <div class="inner">
-              <h3>5</h3>
-              <p>Data Pegawai</p>
-            </div>
-            <div class="icon">
-              <i class="nav-icon fas fa-users"></i>
-            </div>
-            <a href="{{ route('pegawai') }}" class="small-box-footer text-white">More info <i class="fas fa-arrow-circle-right"></i></a>
-          </div>
+        <div class="col">
+          <table class="table table-striped projects text-center">
+            <tr>
+                <th>ID</th>
+                <th>Posisi</th>
+                <th>Divisi</th>
+                <th>Ruang Kerja</th>
+                <th>Aksi</th>
+            </tr> 
+            @foreach ($jabatan as $item)
+            <tr>
+                <td>{{ $item->id }}</td>
+                <td>{{ $item->jabatan }}</td>
+                <td>{{ $item->divisi }}</td>
+                <td>{{ $item->nama }}</td>
+                <td class="project-actions text-center">
+                  <a href="#" class="btn btn-info btn-sm" href="#">
+                      <i class="fas fa-pencil-alt">
+                      </i>
+                      Edit
+                  </a>
+                  <a onclick="return confirm('Apakah anda yakin?')" href="#" class="btn btn-danger btn-sm" href="#">
+                      <i class="fas fa-trash">
+                      </i>
+                      Delete
+                  </a>
+              </td>
+            </tr> 
+            @endforeach 
+        </table>
         </div>
-        <div class="col-lg-3">
-          <div class="small-box text-white">
-            <div class="inner">
-              <h3>5</h3>
-              <p>Data Posisi Pegawai</p>
-            </div>
-            <div class="icon">
-              <i class="nav-icon fas fa-user-friends"></i>
-            </div>
-            <a href="{{ route('jabatan') }}" class="small-box-footer text-white">More info <i class="fas fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <div class="col-lg-3">
-          <div class="small-box text-white">
-            <div class="inner">
-              <h3>5</h3>
-              <p>Data Ruang Kerja</p>
-            </div>
-            <div class="icon">
-              <i class="nav-icon fas fa-building"></i>
-            </div>
-            <a href="{{ route('ruang') }}" class="small-box-footer text-white">More info <i class="fas fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <div class="col"></div>
       </div>
     </div>
       

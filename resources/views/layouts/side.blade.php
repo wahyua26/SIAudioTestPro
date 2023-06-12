@@ -81,6 +81,12 @@
                 </a>
               </li>
               <li class="nav-item">
+                <a href="{{ route('jabatan') }}" class="nav-link">
+                  <i class="fas fa-user-friends"></i>
+                  <p>Data Posisi Pegawai</p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="{{ route('ruang') }}" class="nav-link">
                   <i class="fas fa-building"></i>
                   <p>Data Ruang Kerja</p>

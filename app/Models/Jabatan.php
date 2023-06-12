@@ -5,21 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Workspace extends Model
+class Jabatan extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'nama',
-        'lokasi',
-        'bising',
+        'workspace_id',
+        'jabatan',
+        'divisi',
     ];
 
     public function user(){
         return $this->hasMany(User::class);
     }
 
-    public function jabatan(){
-        return $this->hasMany(Jabatan::class);
+    public function workspace(){
+        return $this->belongsTo(Workspace::class, 'workspace_id');
     }
 }
