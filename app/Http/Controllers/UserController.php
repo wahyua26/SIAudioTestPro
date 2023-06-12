@@ -71,7 +71,7 @@ class UserController extends Controller
 
         $user->update($data);
         //dd($user);
-        return redirect()->route('pegawai')->with('success', 'Karyawan berhasil diedit!');
+        return redirect()->route('pegawai')->with('success', 'Karyawan berhasil diubah!');
     }
 
     public function hapusPegawai($id)

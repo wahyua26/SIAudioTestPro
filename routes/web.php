@@ -31,10 +31,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/jabatan', [MasterDataController::class,'jabatan'])->name('jabatan');
     Route::get('/audiometri', [AudiometriController::class,'index'])->name('audiometri');
     Route::get('/tambah-pegawai', [UserController::class,'tambahPegawai'])->name('tambah-pegawai');
+    Route::get('/tambah-jabatan', [MasterDataController::class,'tambahJabatan'])->name('tambah-jabatan');
     Route::get('/edit-pegawai/{id}', [UserController::class,'editPegawai'])->name('edit-pegawai');
     Route::post('/update-pegawai', [UserController::class,'updatePegawai'])->name('update-pegawai');
     Route::get('/hapus-pegawai/{id}', [UserController::class,'hapusPegawai'])->name('hapus-pegawai');
     Route::post('/pegawai', [UserController::class,'store'])->name('store-pegawai');
+    Route::post('/jabatan', [MasterDataController::class,'kirimJabatan'])->name('kirim-jabatan');
+    Route::get('/edit-jabatan/{id}', [MasterDataController::class,'editJabatan'])->name('edit-jabatan');
+    Route::post('/update-jabatan', [MasterDataController::class,'updateJabatan'])->name('update-jabatan');
+    Route::get('/hapus-jabatan/{id}', [MasterDataController::class,'hapusJabatan'])->name('hapus-jabatan');
 });
 
 Route::get('/login', [LoginController::class,'index'])->name('login');

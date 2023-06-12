@@ -102,7 +102,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <td>{{ $item->id }}</td>
                 <td>{{ $item->nama }}</td>
                 <td>{{ $item->lokasi }}</td>
-                <td>{{ $item->bising }}</td>
+                <td>{{ $item->bising }} dB</td>
                 <td class="project-actions text-center">
                   <a href="#" class="btn btn-info btn-sm" href="#">
                       <i class="fas fa-pencil-alt">
