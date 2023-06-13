@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Jabatan;
+use App\Models\Workspace;
 use Illuminate\Http\Request;
+use Illuminate\Queue\Worker;
 use Illuminate\Support\Facades\DB;
 
 class MasterDataController extends Controller
@@ -34,6 +36,10 @@ class MasterDataController extends Controller
         return view('master.tambahjabatan', ['ruang' => $ruang]);
     }
 
+    public function tambahRuang(){
+        return view('master.tambahruang');
+    }
+
     public function kirimJabatan(Request $request){
         //dd($request);
         $request->validate([
@@ -55,6 +61,29 @@ class MasterDataController extends Controller
         $jabatan = DB::table('jabatans')->where('id', '=', $id)->first();
         $ruang = DB::table('workspaces')->get();
         return view('master.editjabatan', ['jabatan' => $jabatan, 'ruang' => $ruang]);
+    }
+
+    public function editRuang($id){
+        //dd($id);
+        $ruang = DB::table('workspaces')->where('id', '=', $id)->first();
+        return view('master.editruang', ['ruang' => $ruang]);
+    }
+
+    public function kirimRuang(Request $request){
+        //dd($request);
+        $request->validate([
+            'nama' => 'required|unique:workspaces,nama',
+            'lokasi' => 'required',
+            'bising' => 'required|integer|between:1,100',
+        ]);
+
+        Workspace::create([
+            'nama' => $request->nama,
+            'lokasi' => $request->lokasi,
+            'bising' => $request->bising,
+        ]);
+
+        return redirect()->route('ruang')->with('success', 'Ruang Kerja berhasil ditambah!');
     }
 
     public function updateJabatan(Request $request){
@@ -81,6 +110,30 @@ class MasterDataController extends Controller
         return redirect()->route('jabatan')->with('success', 'Posisi Pegawai berhasil diubah!');
     }
 
+    public function updateRuang(Request $request){
+        //dd($request);
+        $request->validate([
+            'nama' => 'required',
+            'lokasi' => 'required',
+            'bising' => 'required|integer|between:1,100',
+        ]);
+
+        $ruang = Workspace::where([
+            ['id','=',$request->id],
+        ])->first();
+        //dd($jabatan);
+
+        $data = [
+            'nama' => $request->nama,
+            'lokasi' => $request->lokasi,
+            'bising' => $request->bising,
+        ];
+
+        $ruang->update($data);
+        //dd($user);
+        return redirect()->route('ruang')->with('success', 'Ruang Kerja berhasil diubah!');
+    }
+
     public function hapusJabatan($id)
     {
         
@@ -89,5 +142,14 @@ class MasterDataController extends Controller
         ])->delete();
 
         return redirect()->route('jabatan')->with('success', 'Posisi Pegawai berhasil dihapus!');
+    }
+
+    public function hapusRuang($id)
+    {
+        Workspace::where([
+            ['id','=',$id],
+        ])->delete();
+
+        return redirect()->route('ruang')->with('success', 'Ruang Kerja berhasil dihapus!');
     }
 }

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tambah Posisi Pegawai</title>
+  <title>Tambah Ruang Kerja</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -71,7 +71,7 @@
           </div>
           <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
             <div class="card">
-              <h5 class="text-center mb-4 font-weight-bold">TAMBAH POSISI PEGAWAI</h5>
+              <h5 class="text-center mb-4 font-weight-bold">TAMBAH RUANG KERJA</h5>
               @if ($errors->any())
                   <div class="alert alert-danger">
                       <ul>
@@ -81,18 +81,11 @@
                       </ul>
                   </div>
                 @endif
-              <form class="form-card" action="/jabatan" method="post">
+              <form class="form-card" action="/ruang-kerja" method="post">
                   @csrf
-                  <div class="form-group col flex-column d-flex"> <label class="form-control-label px-3">Nama Posisi Pegawai<span class="text-danger"> *</span></label> <input type="text" id="jabatan" name="jabatan" placeholder="" value="{{ old('jabatan') }}"> </div>
-                  <div class="form-group col flex-column d-flex"> <label class="form-control-label px-3">Divisi<span class="text-danger"> *</span></label> <input type="text" id="divisi" name="divisi" placeholder="" value="{{ old('divisi') }}" > </div>
-                  <div class="form-group col flex-column d-flex">
-                    <label class="form-control-label px-3">Ruang Kerja<span class="text-danger"> *</span></label>
-                    <select id="ruangKerja" name="ruangKerja" class="form-control select" style="width: 100%;">
-                        @foreach ($ruang as $item)
-                      <option value="{{ $item->id }}">{{ $item->nama }}</option>
-                      @endforeach
-                    </select>
-                </div>
+                  <div class="form-group col flex-column d-flex"> <label class="form-control-label px-3">Nama Ruangan<span class="text-danger"> *</span></label> <input type="text" id="nama" name="nama" placeholder="" value="{{ old('nama') }}"> </div>
+                  <div class="form-group col flex-column d-flex"> <label class="form-control-label px-3">Lokasi<span class="text-danger"> *</span></label> <input type="text" id="lokasi" name="lokasi" placeholder="" value="{{ old('lokasi') }}"> </div>
+                  <div class="form-group col flex-column d-flex"> <label class="form-control-label px-3">Tingkat Kebisingan<span class="text-danger"> *</span></label> <input type="number" id="bising" name="bising" placeholder="" value="{{ old('bising') }}"> </div>
                   <div class="form-group col"> <button type="submit" class="btn-block btn-primary">Tambah</button> </div>
               </form>
           </div>

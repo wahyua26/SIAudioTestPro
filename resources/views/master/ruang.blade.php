@@ -88,6 +88,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Main content -->
     <div class="content">
       <div class="row">
+        <div class="col"></div>
+        <div class="col"></div>
+        <div class="col"></div>
+        <div class="col"></div>
+        <div class="col">
+          <div class="card">
+            <a href="{{ route('tambah-ruang') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah Ruang Kerja</a>
+          </div>
+        </div>
+      </div>
+      <div class="row">
         <div class="col">
           <table class="table table-striped projects text-center">
             <tr>
@@ -104,12 +115,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <td>{{ $item->lokasi }}</td>
                 <td>{{ $item->bising }} dB</td>
                 <td class="project-actions text-center">
-                  <a href="#" class="btn btn-info btn-sm" href="#">
+                  <a href="/edit-ruang/{{ $item->id }}" class="btn btn-info btn-sm">
                       <i class="fas fa-pencil-alt">
                       </i>
                       Edit
                   </a>
-                  <a onclick="return confirm('Apakah anda yakin?')" href="#" class="btn btn-danger btn-sm" href="#">
+                  <a onclick="return confirm('Apakah anda yakin?')" href="/hapus-ruang/{{ $item->id }}" class="btn btn-danger btn-sm">
                       <i class="fas fa-trash">
                       </i>
                       Delete
