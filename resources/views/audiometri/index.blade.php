@@ -12,6 +12,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
       th {
         text-align: center;
       }
+      #hasil{
+        background-color: #53EC0B;
+      }
     </style>
 </head>
 <body class="hold-transition sidebar-mini">
@@ -91,34 +94,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <div class="col">
           <table class="table table-striped projects text-center">
             <tr>
-                <th>ID</th>
                 <th>Nama Lengkap</th>
                 <th>Tanggal</th>
                 <th>Waktu</th>
                 <th>Hasil</th>
                 <th>Risiko</th>
-                <th>Aksi</th>
             </tr> 
+            <input type="hidden" id="tes" value="{{ $count }}">
             @foreach ($hasil as $item)
             <tr>
-                <td>{{ $item->id }}</td>
                 <td>{{ $item->name }}</td>
                 <td>{{ $item->tanggal }}</td>
                 <td>{{ $item->waktu }}</td>
-                <td>{{ $item->hasil }}</td>
+                <td><div class="card" id="hasil">{{ $item->hasil }}</div></td>
                 <td>{{ $item->risiko }}</td>
-                <td class="project-actions text-center">
-                  <a href="#" class="btn btn-info btn-sm" href="#">
-                      <i class="fas fa-pencil-alt">
-                      </i>
-                      Edit
-                  </a>
-                  <a onclick="return confirm('Apakah anda yakin?')" href="#" class="btn btn-danger btn-sm" href="#">
-                      <i class="fas fa-trash">
-                      </i>
-                      Delete
-                  </a>
-              </td>
             </tr> 
             @endforeach 
         </table>
@@ -136,7 +125,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 </div>
 <!-- REQUIRED SCRIPTS -->
-
 <!-- jQuery -->
 @include('layouts.script')
 </body>

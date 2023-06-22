@@ -21,10 +21,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'workspace_id',
         'jabatan_id',
         'tglLahir',
         'status',
+        'foto',
     ];
 
     /**
@@ -49,10 +49,6 @@ class User extends Authenticatable
     
     public function audiometri(){
         return $this->hasMany(Audiometri::class);
-    }
-
-    public function workspace(){
-        return $this->belongsTo(Workspace::class, 'workspace_id');
     }
 
     public function jabatan(){

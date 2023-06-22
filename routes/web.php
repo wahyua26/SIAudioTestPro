@@ -24,7 +24,7 @@ Route::get('/', function () {
 
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/home', function () { return view('home'); })->name('home');
+    Route::get('/home', [AudiometriController::class,'home'])->name('home');
     Route::get('/menu', [MasterDataController::class,'menu'])->name('menu');
     Route::get('/pegawai', [MasterDataController::class,'pegawai'])->name('pegawai');
     Route::get('/ruang-kerja', [MasterDataController::class,'ruang'])->name('ruang');
@@ -37,6 +37,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/update-pegawai', [UserController::class,'updatePegawai'])->name('update-pegawai');
     Route::get('/hapus-pegawai/{id}', [UserController::class,'hapusPegawai'])->name('hapus-pegawai');
     Route::post('/pegawai', [UserController::class,'store'])->name('store-pegawai');
+    Route::get('/detail-akun/{id}', [UserController::class,'detail'])->name('detail-akun');
     Route::post('/jabatan', [MasterDataController::class,'kirimJabatan'])->name('kirim-jabatan');
     Route::get('/edit-jabatan/{id}', [MasterDataController::class,'editJabatan'])->name('edit-jabatan');
     Route::post('/update-jabatan', [MasterDataController::class,'updateJabatan'])->name('update-jabatan');
@@ -45,6 +46,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/edit-ruang/{id}', [MasterDataController::class,'editRuang'])->name('edit-ruang');
     Route::post('/update-ruang', [MasterDataController::class,'updateRuang'])->name('update-ruang');
     Route::get('/hapus-ruang/{id}', [MasterDataController::class,'hapusRuang'])->name('hapus-ruang');
+    Route::get('/edit-akun/{id}', [UserController::class,'editAkun'])->name('edit-akun');
+    Route::post('/update-akun', [UserController::class,'updateAkun'])->name('update-akun');
+    Route::post('/update-foto-profile', [UserController::class,'updateFoto'])->name('update-foto-profile');
 });
 
 Route::get('/login', [LoginController::class,'index'])->name('login');

@@ -87,7 +87,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <div class="col-lg-3">
           <div class="small-box text-white">
             <div class="inner">
-              <h3>5</h3>
+              <h3>{{ $user }}</h3>
               <p>Data Pegawai</p>
             </div>
             <div class="icon">
@@ -99,7 +99,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <div class="col-lg-3">
           <div class="small-box text-white">
             <div class="inner">
-              <h3>5</h3>
+              <h3>{{ $jabatan }}</h3>
               <p>Data Posisi Pegawai</p>
             </div>
             <div class="icon">
@@ -111,7 +111,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <div class="col-lg-3">
           <div class="small-box text-white">
             <div class="inner">
-              <h3>5</h3>
+              <h3>{{ $ruangan }}</h3>
               <p>Data Ruang Kerja</p>
             </div>
             <div class="icon">

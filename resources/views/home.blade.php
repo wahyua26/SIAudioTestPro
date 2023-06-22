@@ -97,41 +97,41 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <table id="example2" class="table table-bordered table-striped table-hover dataTable dtr-inline" aria-describedby="example2_info">
             <thead>
               <tr>
-                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column ascending">Nama Lengkap</th>
-                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Usia</th>
-                <th class="sorting sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column descending" aria-sort="ascending">Hasil Tes</th>
-                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Ruang Kerja</th>
-                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Rekomendasi</th>
+                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Ruang Kerja</th>
+                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Tingkat Kebisingan</th>
+                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" >Rata-Rata Hasil Audiometri</th>
+                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" >Rata-Rata Usia</th>
+                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" >Rekomendasi</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody class="text-center">
               <tr class="odd">
-                <td class="dtr-control">Budi Pratama</td>
-                <td>58 Tahun</td>
-                <td class="sorting_1">Tuli Konduktif</td>
+                <td>Gudang Utama</td>
+                <td>90 db</td>
+                <td>50%</td>
+                <td>60 Tahun</td>
+                <td>Pengecekan ruang kerja dan pemeriksaan pegawai usia lanjut</td>
+              </tr>
+              <tr class="even">
+                <td>Ruang Distribusi</td>
+                <td>76 db</td>
+                <td>82%</td>
+                <td>38 Tahun</td>
+                <td>Ruang kerja sudah baik begitu pula dengan pegawainya</td>
+              </tr>
+              <tr class="odd">
                 <td>Ruang Produksi</td>
-                <td>Perlu Pemeriksaan Lebih Lanjut</td>
+                <td>88 db</td>
+                <td>85%</td>
+                <td>40 Tahun</td>
+                <td>Pengecekan ruang kerja</td>
               </tr>
               <tr class="even">
-                <td class="dtr-control">Misc</td>
-                <td>NetFront 3.1</td>
-                <td class="sorting_1">Embedded devices</td>
-                <td>-</td>
-                <td>C</td>
-              </tr>
-              <tr class="odd">
-                <td class="dtr-control">Misc</td>
-                <td>NetFront 3.4</td>
-                <td class="sorting_1">Embedded devices</td>
-                <td>-</td>
-                <td>A</td>
-              </tr>
-              <tr class="even">
-                <td class="dtr-control">Misc</td>
-                <td>Dillo 0.8</td>
-                <td class="sorting_1">Embedded devices</td>
-                <td>-</td>
-                <td>X</td>
+                <td>Kantor Admin</td>
+                <td>65 db</td>
+                <td>55%</td>
+                <td>45 Tahun</td>
+                <td>Pemeriksaan pegawai</td>
               </tr>
             </tbody>
           </table>
@@ -143,7 +143,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <div class="col-lg-3">
           <div class="small-box text-white">
             <div class="inner">
-              <h3>5</h3>
+              <h3>{{ $audiometri }}</h3>
               <p>Hasil Audiometri</p>
             </div>
             <div class="icon">
@@ -188,8 +188,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     data: {
       labels: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni'],
       datasets: [{
-        label: '90%',
-        data: [12, 19, 3, 5, 2, 3],
+        label: 'Rata-Rata Tingkat Pendengaran',
+        data: [65, 55, 76, 80, 60, 43],
         borderWidth: 1
       }]
     },

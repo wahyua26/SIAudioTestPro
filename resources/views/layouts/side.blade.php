@@ -2,7 +2,7 @@
     <!-- Brand Logo -->
     <a href="{{ route('home') }}" class="brand-link">
       <img src="{{ asset('AdminLTE/dist/img/logo7.png') }}" alt="SIATP Logo" class="brand-image" style="opacity: 1">
-      <span class="span">
+      <span>
         SIATP
       </span>
     </a>
@@ -12,10 +12,10 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="{{ asset('AdminLTE/dist/img/avatar5.png') }}" class="img-circle elevation-2" alt="User Image">
+          <img src="{{ asset('storage/images/' . auth()->user()->foto) }}"  class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">{{ auth()->user()->name }}</a>
+          <a href="/detail-akun/{{ auth()->user()->id }}" class="d-block">{{ auth()->user()->name }}</a>
         </div>
       </div>
 

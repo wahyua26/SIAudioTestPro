@@ -15,10 +15,6 @@ class Workspace extends Model
         'bising',
     ];
 
-    public function user(){
-        return $this->hasMany(User::class);
-    }
-
     public function jabatan(){
         return $this->hasMany(Jabatan::class);
     }

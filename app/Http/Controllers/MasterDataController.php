@@ -11,11 +11,14 @@ use Illuminate\Support\Facades\DB;
 class MasterDataController extends Controller
 {
     public function menu(){
-        return view('master.menu');
+        $user = DB::table('users')->get();
+        $jabatan = DB::table('jabatans')->get();
+        $ruangan = DB::table('workspaces')->get();
+        return view('master.menu', ['user' => $user->count(), 'jabatan' => $jabatan->count(), 'ruangan' => $ruangan->count()]);
     }
 
     public function pegawai(){
-        $pegawai = DB::table('users')->join('workspaces', 'users.workspace_id', '=', 'workspaces.id')->join('jabatans', 'users.jabatan_id', '=', 'jabatans.id')->select('users.*', 'workspaces.nama', 'jabatans.jabatan')->get();
+        $pegawai = DB::table('users')->join('jabatans', 'users.jabatan_id', '=', 'jabatans.id')->join('workspaces', 'jabatans.workspace_id', '=', 'workspaces.id')->select('users.*', 'workspaces.nama', 'jabatans.jabatan')->get();
         //dd($pegawai);
         return view('master.pegawai', ['pegawai' => $pegawai]);
     }

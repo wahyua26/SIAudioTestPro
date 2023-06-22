@@ -80,7 +80,7 @@
                       </ul>
                   </div>
                 @endif
-                <form class="form-card" action="/pegawai" method="post">
+                <form class="form-card" action="/pegawai" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="row justify-content-between text-left">
                         <div class="form-group col-sm-6 flex-column d-flex">

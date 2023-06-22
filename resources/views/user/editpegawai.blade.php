@@ -80,7 +80,7 @@
                       </ul>
                   </div>
                 @endif
-                <form class="form-card" action="/update-pegawai" method="post">
+                <form class="form-card" action="/update-pegawai" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="row justify-content-between text-left">
                         <div class="form-group col-sm-6 flex-column d-flex">
@@ -108,11 +108,11 @@
                           <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Email<span class="text-danger"> *</span></label> <input type="email" id="email" name="email" placeholder="" value="{{ old('email', $user->email) }}"> </div>
                     </div>
                     <div class="row justify-content-end">
-                        <input type="hidden" id="id" name="id" placeholder="" value="{{ old('tglLahir', $user->id) }}">
+                        <input type="hidden" id="id" name="id" placeholder="" value="{{ old('id', $user->id) }}">
                         <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Password<span class="text-danger"> *</span></label> <input type="password" id="password" name="password" placeholder="" > </div>
                     </div>
                     <div class="row justify-content-end">
-                        <div class="form-group col-sm-6"> <button type="submit" class="btn-block btn-primary">Tambah</button> </div>
+                        <div class="form-group col-sm-6"> <button type="submit" class="btn-block btn-primary">Ubah</button> </div>
                     </div>
                 </form>
             </div>

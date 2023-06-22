@@ -19,20 +19,37 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required|unique:users,email',
             'password' => 'required|min:8',
+            'foto' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048',
         ]);
-
-        $ruang = DB::table('jabatans')->join('workspaces', 'workspaces.id', '=', 'jabatans.workspace_id')->where('jabatans.id', '=', $request->jabatan)->value('workspaces.id');
-        //dd($ruang);
 
         User::create([
             'name' => $request->name,
             'status' => $request->status,
             'tglLahir' => $request->tglLahir,
             'jabatan_id' => $request->jabatan,
-            'workspace_id' => $ruang,
             'email' => $request->email,
             'password' => bcrypt($request->password),
         ]);
+
+        $user = User::where([
+            ['email','=',$request->email],
+        ])->first();
+
+        //dd($user);
+
+        if($request->hasFile('foto'))
+        {
+            $filename = uniqid() . '.png';
+            $request->foto->storeAs('images',$filename,'public');
+            $data = ['foto' => $filename];
+            $user->update($data);
+        }
+        else{
+            $data = ['foto' => 'avatar5.png'];
+            $user->update($data);
+        }
+        
+        //dd($user);
 
         return redirect()->route('pegawai')->with('success', 'Pegawai berhasil ditambah!');
     }
@@ -42,6 +59,12 @@ class UserController extends Controller
         $user = DB::table('users')->where('id', '=', $id)->first();
         return view('user.editpegawai', ['user' => $user, 'jabatan' => $jabatan]);
     }
+
+    public function editAkun($id){
+        $jabatan = DB::table('jabatans')->get();
+        $user = DB::table('users')->where('id', '=', $id)->first();
+        return view('user.editakun', ['user' => $user, 'jabatan' => $jabatan]);
+    }
     
     public function updatePegawai(Request $request){
         //dd($request);
@@ -50,9 +73,6 @@ class UserController extends Controller
             'email' => 'required|unique:users,email',
             'password' => 'required|min:8',
         ]);
-
-        $ruang = DB::table('jabatans')->join('workspaces', 'workspaces.id', '=', 'jabatans.workspace_id')->where('jabatans.id', '=', $request->jabatan)->value('workspaces.id');
-        //dd($ruang);
 
         $user = User::where([
             ['id','=',$request->id],
@@ -64,14 +84,67 @@ class UserController extends Controller
             'status' => $request->status,
             'tglLahir' => $request->tglLahir,
             'jabatan_id' => $request->jabatan,
-            'workspace_id' => $ruang,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+        ];
+
+        $user->update($data);
+
+        //dd($user);
+
+        if($request->hasFile('foto'))
+        {
+            $filename = uniqid() . '.png';
+            $request->foto->storeAs('images',$filename,'public');
+            $data = ['foto' => $filename];
+            $user->update($data);
+        }
+        else{
+            $data = ['foto' => 'avatar5.png'];
+            $user->update($data);
+        }
+        //dd($user);
+        return redirect()->route('pegawai')->with('success', 'Karyawan berhasil diubah!');
+    }
+
+    public function updateAkun(Request $request){
+        //dd($request);
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|unique:users,email',
+            'password' => 'required|min:8',
+        ]);
+
+        $user = User::where([
+            ['id','=',$request->id],
+        ])->first();
+        //dd($user);
+
+        $data = [
+            'name' => $request->name,
+            'status' => $request->status,
+            'tglLahir' => $request->tglLahir,
+            'jabatan_id' => $request->jabatan,
             'email' => $request->email,
             'password' => bcrypt($request->password),
         ];
 
         $user->update($data);
         //dd($user);
-        return redirect()->route('pegawai')->with('success', 'Karyawan berhasil diubah!');
+
+        if($request->hasFile('foto'))
+        {
+            $filename = uniqid() . '.png';
+            $request->foto->storeAs('images',$filename,'public');
+            $data = ['foto' => $filename];
+            $user->update($data);
+        }
+        else{
+            $data = ['foto' => 'avatar5.png'];
+            $user->update($data);
+        }
+
+        return redirect()->route('detail-akun', ['id' => $request->id ])->with('success', 'Detail akun berhasil diubah!');
     }
 
     public function hapusPegawai($id)
@@ -84,4 +157,23 @@ class UserController extends Controller
         return redirect()->route('pegawai')->with('success', 'Karyawan berhasil dihapus!');
     }
 
+    public function detail($id){
+        $user = DB::table('users')->join('jabatans', 'jabatans.id', '=', 'users.jabatan_id')->join('workspaces', 'workspaces.id', '=', 'jabatans.workspace_id')->select('users.*', 'jabatans.jabatan', 'workspaces.nama')->where('users.id', '=', $id)->first();
+        //dd($user);
+        return view('user.detail',['user' => $user]);
+    }
+
+    public function updateFoto (Request $request){
+        //dd($request);
+        $user = User::where([
+            ['id','=',$request->id],
+        ])->first();
+
+        $filename = uniqid() . '.png';
+        $request->foto->storeAs('images',$filename,'public');
+        $data = ['foto' => $filename];
+        $user->update($data);
+
+        return redirect()->route('detail-akun', ['id' => $request->id ])->with('success', 'Foto profil berhasil diubah!');
+    }
 }
