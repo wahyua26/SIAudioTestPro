@@ -17,9 +17,7 @@ class AudiometriFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' =>fake()->numberBetween(1,20),
-            'tanggal' => fake()->date(),
-            'waktu' => fake()->time(),
+        
         ];
     }
 }

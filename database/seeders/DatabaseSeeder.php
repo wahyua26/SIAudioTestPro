@@ -12,7 +12,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(20)->create();
+        \App\Models\User::factory(20)->create();
 
         \App\Models\User::factory()->create([
             'name' => 'Budi Pratama',
@@ -20,52 +20,39 @@ class DatabaseSeeder extends Seeder
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'status' => 'admin',
             'jabatan_id' => 1,
+            'foto' => 'avatar5.png',
         ]);
 
-        // \App\Models\Workspace::factory()->create([
-        //     'nama' => 'Ruang Produksi',
-        // ]);
+        \App\Models\Workspace::factory()->create([
+            'nama' => 'Ruang Produksi',
+        ]);
 
-        // \App\Models\Workspace::factory()->create([
-        //     'nama' => 'Ruang Distribusi',
-        // ]);
+        \App\Models\Workspace::factory()->create([
+            'nama' => 'Ruang Distribusi',
+        ]);
 
-        // \App\Models\Jabatan::factory()->create([
-        //     'jabatan' => 'Staff Distribusi',
-        //     'divisi' => 'Distribution'
-        // ]);
+        \App\Models\Jabatan::factory()->create([
+            'jabatan' => 'Staff Distribusi',
+            'divisi' => 'Distribution',
+            'workspace_id' => 2,
+        ]);
 
-        // \App\Models\Jabatan::factory()->create([
-        //     'jabatan' => 'Manajer Distribusi',
-        //     'divisi' => 'Distribution'
-        // ]);
+        \App\Models\Jabatan::factory()->create([
+            'jabatan' => 'Manajer Distribusi',
+            'divisi' => 'Distribution',
+            'workspace_id' => 2,
+        ]);
 
-        // \App\Models\Jabatan::factory()->create([
-        //     'jabatan' => 'Staff Produksi',
-        //     'divisi' => 'Production'
-        // ]);
+        \App\Models\Jabatan::factory()->create([
+            'jabatan' => 'Staff Produksi',
+            'divisi' => 'Production',
+            'workspace_id' => 1,
+        ]);
 
-        // \App\Models\Jabatan::factory()->create([
-        //     'jabatan' => 'Manajer Produksi',
-        //     'divisi' => 'Production'
-        // ]);
-
-        // \App\Models\Audiometri::factory()->create([
-        //     'user_id' => 1,
-        //     'hasil' => 'Tuli Ringan',
-        //     'risiko' => 'Tidak Berisiko',
-        // ]);
-
-        // \App\Models\Audiometri::factory()->create([
-        //     'user_id' => 12,
-        //     'hasil' => 'Tuli Sedang',
-        //     'risiko' => 'Berisiko Sedang',
-        // ]);
-
-        // \App\Models\Audiometri::factory()->create([
-        //     'user_id' => 17,
-        //     'hasil' => 'Tuli Berat',
-        //     'risiko' => 'Berisiko Tinggi',
-        // ]);
+        \App\Models\Jabatan::factory()->create([
+            'jabatan' => 'Manajer Produksi',
+            'divisi' => 'Production',
+            'workspace_id' => 1,
+        ]);
     }
 }

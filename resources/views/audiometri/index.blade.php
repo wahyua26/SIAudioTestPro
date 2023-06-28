@@ -12,9 +12,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
       th {
         text-align: center;
       }
-      #hasil{
-        background-color: #53EC0B;
-      }
     </style>
 </head>
 <body class="hold-transition sidebar-mini">
@@ -98,7 +95,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <th>Tanggal</th>
                 <th>Waktu</th>
                 <th>Hasil</th>
-                <th>Risiko</th>
+                <th>Aksi</th>
             </tr> 
             <input type="hidden" id="tes" value="{{ $count }}">
             @foreach ($hasil as $item)
@@ -106,8 +103,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <td>{{ $item->name }}</td>
                 <td>{{ $item->tanggal }}</td>
                 <td>{{ $item->waktu }}</td>
-                <td><div class="card" id="hasil">{{ $item->hasil }}</div></td>
-                <td>{{ $item->risiko }}</td>
+                <td>{{ $item->keterangan }}</div></td>
+                <td class="project-actions text-center">
+                  <a href="#" class="btn btn-info btn-sm">
+                    <i class="fas fa-info-circle"></i> Detail
+                  </a>
+              </td>
             </tr> 
             @endforeach 
         </table>

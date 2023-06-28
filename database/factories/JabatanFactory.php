@@ -17,7 +17,7 @@ class JabatanFactory extends Factory
     public function definition(): array
     {
         return [
-            'workspace_id' => fake()->numberBetween(1,2),
+            
         ];
     }
 }

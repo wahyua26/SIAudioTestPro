@@ -61,7 +61,7 @@
           </li> --}}
           <li class="nav-item">
             <a href="{{ route('audiometri') }}" class="nav-link">
-              <i class="nav-icon fas fa-scroll "></i>
+              <i class="nav-icon fas fa-file-medical "></i>
               <p class="text-dark">Hasil Audiometri</p>
             </a>
           </li>
@@ -93,6 +93,12 @@
                 </a>
               </li>
             </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-clipboard "></i>
+              <p class="text-dark">Hasil Rekomendasi</p>
+            </a>
           </li>
           <br>
         <li class="nav-item">

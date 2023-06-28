@@ -11,3 +11,4 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
   <link rel="stylesheet" href="{{ asset('AdminLTE/dist/css/mystyle.css') }}">
+  <link href='{{ asset('AdminLTE/dist/img/logo1.png') }}' rel='shortcut icon'>

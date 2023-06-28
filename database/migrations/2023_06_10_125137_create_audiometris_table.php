@@ -17,7 +17,11 @@ return new class extends Migration
             $table->date('tanggal');
             $table->time('waktu');
             $table->string('hasil');
-            $table->string('risiko');
+            $table->string('keterangan');
+            $table->string('hasilKanan');
+            $table->string('keteranganKanan');
+            $table->string('hasilKiri');
+            $table->string('keteranganKiri');
             $table->timestamps();
         });
     }
