@@ -6,7 +6,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 -->
 <html lang="en">
 <head>
-    <title>Data Hasil Audiometri</title>
+    <title>Data Hasil Rekomendasi Ruang Kerja</title>
     @include('layouts.head')
     <style>
       th {
@@ -72,7 +72,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm">
-            <h1 class="m-0 font-weight-bold">DATA HASIL AUDIOMETRI</h1>
+            <h1 class="m-0 font-weight-bold">DATA HASIL REKOMENDASI RUANG KERJA</h1>
           </div><!-- /.col -->
           <div class="col-sm">
             {{-- <ol class="breadcrumb float-sm-right">
@@ -87,29 +87,31 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <!-- Main content -->
     <div class="content">
+        <div class="row">
+            <div class="col ml-3 mt-3">
+                <h5> Keterangan : (*) Rata-Rata</h5>
+            </div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col">
+              <div class="card">
+                <a href="#" class="btn btn-primary"><i class="fas fa-plus"></i> Minta Rekomendasi</a>
+              </div>
+            </div>
+        </div>
       <div class="row">
         <div class="col">
           <table class="table table-striped projects text-center">
             <tr>
-                <th>Nama Lengkap</th>
+                <th>Ruang Kerja</th>
                 <th>Tanggal</th>
                 <th>Waktu</th>
-                <th>Hasil</th>
-                <th>Aksi</th>
+                <th>Tingkat Kebisingan</th>
+                <th>Hasil Audiometri Pegawai*</th>
+                <th>Usia Pegawai*</th>
+                <th>Rekomendasi</th>
             </tr> 
-            @foreach ($hasil as $item)
-            <tr>
-                <td>{{ $item->name }}</td>
-                <td>{{ $item->tanggal }}</td>
-                <td>{{ $item->waktu }}</td>
-                <td>{{ $item->keterangan }}</div></td>
-                <td class="project-actions text-center">
-                  <a href="#" class="btn btn-info btn-sm">
-                    <i class="fas fa-info-circle"></i> Detail
-                  </a>
-              </td>
-            </tr> 
-            @endforeach 
         </table>
         </div>
       </div>

@@ -18,7 +18,7 @@ class WorkspaceFactory extends Factory
     {
         return [
             'lokasi' => fake()->address(),
-            'bising' => fake()->numberBetween(20,100)
+            'bising' => fake()->numberBetween(0,110)
         ];
     }
 }

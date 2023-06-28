@@ -84,7 +84,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-
     <!-- Main content -->
     <div class="content">
       <div class="row">
@@ -167,19 +166,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <div class="col-lg-3">
           <div class="small-box text-white">
             <div class="inner">
-              <h3 class="h3">5</h3>
+              <h3>{{ $rekomendasi }}</h3>
               <p>Hasil Rekomendasi</p>
             </div>
             <div class="icon">
               <i class="nav-icon fas fa-clipboard"></i>
             </div>
-            <a href="#" class="small-box-footer text-white">More info <i class="fas fa-arrow-circle-right"></i></a>
+            <a href="{{ route('rekomendasi') }}" class="small-box-footer text-white">More info <i class="fas fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <div class="col"></div>
       </div>
     </div>
-      
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
@@ -200,7 +198,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     data: {
       labels: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni'],
       datasets: [{
-        label: 'Rata-Rata Tingkat Pendengaran',
+        label: 'Persentase Tingkat Pendengaran',
         data: [65, 55, 76, 80, 60, 43],
         borderWidth: 1
       }]

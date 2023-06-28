@@ -18,4 +18,8 @@ class Workspace extends Model
     public function jabatan(){
         return $this->hasMany(Jabatan::class);
     }
+
+    public function rekomendasi(){
+        return $this->hasMany(Rekomendasi::class);
+    }
 }

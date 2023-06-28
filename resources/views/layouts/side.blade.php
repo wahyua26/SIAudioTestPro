@@ -59,6 +59,15 @@
               </li>
             </ul>
           </li> --}}
+          @if (auth()->user()->status == 'pegawai')
+          <li class="nav-item">
+            <a href="/audiometri-pegawai/{{ auth()->user()->id }}" class="nav-link">
+              <i class="nav-icon fas fa-file-medical "></i>
+              <p class="text-dark">Hasil Audiometri</p>
+            </a>
+          </li>
+          @endif
+          @if (auth()->user()->status == 'admin')
           <li class="nav-item">
             <a href="{{ route('audiometri') }}" class="nav-link">
               <i class="nav-icon fas fa-file-medical "></i>
@@ -101,6 +110,7 @@
             </a>
           </li>
           <br>
+          @endif
         <li class="nav-item">
           <a href="{{ route('logout') }}" class="nav-link">
             <i class="fas fa-sign-out-alt"></i>

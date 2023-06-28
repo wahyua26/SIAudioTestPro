@@ -3,6 +3,7 @@
 use App\Http\Controllers\AudiometriController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MasterDataController;
+use App\Http\Controllers\RekomendasiController;
 use App\Http\Controllers\UserController;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
@@ -21,9 +22,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('login');
 });
+Route::group(['middleware' => ['auth','CekStatus:admin,pegawai']], function () {
+    Route::get('/homePegawai/{id}', [AudiometriController::class,'homePegawai'])->name('home');
+    Route::get('/detail-akun/{id}', [UserController::class,'detail'])->name('detail-akun');
+    Route::get('/edit-akun/{id}', [UserController::class,'editAkun'])->name('edit-akun');
+    Route::post('/update-akun', [UserController::class,'updateAkun'])->name('update-akun');
+    Route::post('/update-foto-profile', [UserController::class,'updateFoto'])->name('update-foto-profile');
+    Route::get('/audiometri-pegawai/{id}', [AudiometriController::class,'indexPegawai'])->name('audiometri-pegawai');
+});
 
-
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => ['auth','CekStatus:admin']], function () {
     Route::get('/home', [AudiometriController::class,'home'])->name('home');
     Route::get('/menu', [MasterDataController::class,'menu'])->name('menu');
     Route::get('/pegawai', [MasterDataController::class,'pegawai'])->name('pegawai');
@@ -37,7 +45,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/update-pegawai', [UserController::class,'updatePegawai'])->name('update-pegawai');
     Route::get('/hapus-pegawai/{id}', [UserController::class,'hapusPegawai'])->name('hapus-pegawai');
     Route::post('/pegawai', [UserController::class,'store'])->name('store-pegawai');
-    Route::get('/detail-akun/{id}', [UserController::class,'detail'])->name('detail-akun');
     Route::post('/jabatan', [MasterDataController::class,'kirimJabatan'])->name('kirim-jabatan');
     Route::get('/edit-jabatan/{id}', [MasterDataController::class,'editJabatan'])->name('edit-jabatan');
     Route::post('/update-jabatan', [MasterDataController::class,'updateJabatan'])->name('update-jabatan');
@@ -46,9 +53,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/edit-ruang/{id}', [MasterDataController::class,'editRuang'])->name('edit-ruang');
     Route::post('/update-ruang', [MasterDataController::class,'updateRuang'])->name('update-ruang');
     Route::get('/hapus-ruang/{id}', [MasterDataController::class,'hapusRuang'])->name('hapus-ruang');
-    Route::get('/edit-akun/{id}', [UserController::class,'editAkun'])->name('edit-akun');
-    Route::post('/update-akun', [UserController::class,'updateAkun'])->name('update-akun');
-    Route::post('/update-foto-profile', [UserController::class,'updateFoto'])->name('update-foto-profile');
+    Route::get('/rekomendasi', [RekomendasiController::class,'index'])->name('rekomendasi');
 });
 
 Route::get('/login', [LoginController::class,'index'])->name('login');

@@ -6,7 +6,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 -->
 <html lang="en">
 <head>
-    <title>Data Hasil Audiometri</title>
+    <title>Home</title>
     @include('layouts.head')
     <style>
       th {
@@ -72,7 +72,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm">
-            <h1 class="m-0 font-weight-bold">DATA HASIL AUDIOMETRI</h1>
+            <h1 class="m-0 font-weight-bold">DASHBOARD</h1>
           </div><!-- /.col -->
           <div class="col-sm">
             {{-- <ol class="breadcrumb float-sm-right">
@@ -84,37 +84,35 @@ scratch. This page gets rid of all links and provides the needed markup only.
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-
     <!-- Main content -->
     <div class="content">
       <div class="row">
-        <div class="col">
-          <table class="table table-striped projects text-center">
-            <tr>
-                <th>Nama Lengkap</th>
-                <th>Tanggal</th>
-                <th>Waktu</th>
-                <th>Hasil</th>
-                <th>Aksi</th>
-            </tr> 
-            @foreach ($hasil as $item)
-            <tr>
-                <td>{{ $item->name }}</td>
-                <td>{{ $item->tanggal }}</td>
-                <td>{{ $item->waktu }}</td>
-                <td>{{ $item->keterangan }}</div></td>
-                <td class="project-actions text-center">
-                  <a href="#" class="btn btn-info btn-sm">
-                    <i class="fas fa-info-circle"></i> Detail
-                  </a>
-              </td>
-            </tr> 
-            @endforeach 
-        </table>
+        <div class="col"></div>
+        <div class="col-7">
+          <div>
+            <canvas id="myChart"></canvas>
+          </div>
         </div>
+        <div class="col"></div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col"></div>
+        <div class="col-lg-3">
+          <div class="small-box text-white">
+            <div class="inner">
+              <h3>{{ $audiometri }}</h3>
+              <p>Hasil Audiometri</p>
+            </div>
+            <div class="icon">
+              <i class="nav-icon fas fa-file-medical"></i>
+            </div>
+            <a href="/audiometri-pegawai/{{ auth()->user()->id }}" class="small-box-footer text-white">More info <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <div class="col"></div>
       </div>
     </div>
-      
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
@@ -125,6 +123,30 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 </div>
 <!-- REQUIRED SCRIPTS -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  const ctx = document.getElementById('myChart');
+
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni'],
+      datasets: [{
+        label: 'Persentase Tingkat Pendengaran',
+        data: [65, 55, 76, 80, 60, 43],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>
 <!-- jQuery -->
 @include('layouts.script')
 </body>
