@@ -89,7 +89,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="row">
         <div class="col">
           <div>
-            <canvas id="myChart"></canvas>
+            <canvas id="Chart"></canvas>
           </div>
         </div>
         <div class="col">
@@ -191,7 +191,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
-  const ctx = document.getElementById('myChart');
+  const ctx = document.getElementById('Chart');
 
   new Chart(ctx, {
     type: 'line',

@@ -12,4 +12,8 @@ class Audiometri extends Model
     public function user(){
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    public function detailAudiometri(){
+        return $this->hasMany(DetailAudiometri::class);
+    }
 }

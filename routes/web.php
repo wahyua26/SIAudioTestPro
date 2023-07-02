@@ -38,6 +38,7 @@ Route::group(['middleware' => ['auth','CekStatus:admin']], function () {
     Route::get('/ruang-kerja', [MasterDataController::class,'ruang'])->name('ruang');
     Route::get('/jabatan', [MasterDataController::class,'jabatan'])->name('jabatan');
     Route::get('/audiometri', [AudiometriController::class,'index'])->name('audiometri');
+    Route::get('/detail-audiometri/{id}', [AudiometriController::class,'detail'])->name('detail-audiometri');
     Route::get('/tambah-pegawai', [UserController::class,'tambahPegawai'])->name('tambah-pegawai');
     Route::get('/tambah-jabatan', [MasterDataController::class,'tambahJabatan'])->name('tambah-jabatan');
     Route::get('/tambah-ruang', [MasterDataController::class,'tambahRuang'])->name('tambah-ruang');
@@ -54,6 +55,7 @@ Route::group(['middleware' => ['auth','CekStatus:admin']], function () {
     Route::post('/update-ruang', [MasterDataController::class,'updateRuang'])->name('update-ruang');
     Route::get('/hapus-ruang/{id}', [MasterDataController::class,'hapusRuang'])->name('hapus-ruang');
     Route::get('/rekomendasi', [RekomendasiController::class,'index'])->name('rekomendasi');
+    Route::get('/minta-rekomendasi', [RekomendasiController::class,'mintaRekomendasi'])->name('minta-rekomendasi');
 });
 
 Route::get('/login', [LoginController::class,'index'])->name('login');

@@ -11,4 +11,9 @@ class RekomendasiController extends Controller
         $rekomendasi = DB::table('rekomendasis')->get();
         return view('rekomendasi.index', ['rekomendasi' => $rekomendasi]);
     }
+
+    public function mintaRekomendasi(){
+        $ruang = DB::table('workspaces')->get();
+        return view('rekomendasi.form', ['ruang' => $ruang]);
+    }
 }

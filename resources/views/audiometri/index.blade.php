@@ -104,7 +104,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <td>{{ $item->waktu }}</td>
                 <td>{{ $item->keterangan }}</div></td>
                 <td class="project-actions text-center">
-                  <a href="#" class="btn btn-info btn-sm">
+                  <a href="/detail-audiometri/{{ $item->id }}" class="btn btn-info btn-sm">
                     <i class="fas fa-info-circle"></i> Detail
                   </a>
               </td>

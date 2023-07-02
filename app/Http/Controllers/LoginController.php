@@ -17,11 +17,12 @@ class LoginController extends Controller
             'email' => 'required|email',
             'password' => 'required'
         ]);
+        //dd($request);
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
             $user = DB::table('users')->where('users.email', $request->email)->first();
-            //dd($request->email, $status);
+            //dd($request->email, $user->status);
             if($user->status == 'admin'){
                 return redirect()->intended('/home')->with('success','Anda Berhasil Masuk!');
             }

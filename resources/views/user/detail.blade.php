@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="{{ asset('AdminLTE/dist/css/adminlte.min.css') }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+  <link href='{{ asset('AdminLTE/dist/img/logo1.png') }}' rel='shortcut icon'>
   <style>
     .divider:after,
     .divider:before {
@@ -65,8 +66,14 @@
       <div class="container-fluid h-custom">
         <div class="row d-flex justify-content-center align-items-center h-100">
           <div class="col-md-9 col-lg-6 col-xl-5">
+            @if (auth()->user()->status == 'admin')
             <a href="/home" ><img class="img-circle elevation-5" src="{{ asset('AdminLTE/dist/img/Picture1.png') }}"
               class="img-fluid" alt="Sample image"></a>
+            @endif
+            @if (auth()->user()->status == 'pegawai')
+            <a href="/homePegawai/{{ $user->id }}" ><img class="img-circle elevation-5" src="{{ asset('AdminLTE/dist/img/Picture1.png') }}"
+              class="img-fluid" alt="Sample image"></a>
+            @endif
           </div>
           <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
             <div class="card">

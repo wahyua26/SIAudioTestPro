@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="{{ asset('AdminLTE/dist/css/adminlte.min.css') }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+  <link href='{{ asset('AdminLTE/dist/img/logo1.png') }}' rel='shortcut icon'>
   <style>
     .divider:after,
     .divider:before {
@@ -93,6 +94,7 @@
                         </div>
                         <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Nama Lengkap<span class="text-danger"> *</span></label> <input type="text" id="name" name="name" placeholder="" value="{{ old('name', $user->name) }}"> </div>
                     </div>
+                    @if (auth()->user()->status == 'admin')
                     <div class="row justify-content-between text-left">
                         <div class="form-group col-sm-6 flex-column d-flex">
                             <label class="form-control-label px-3">Status<span class="text-danger"> *</span></label>
@@ -100,7 +102,7 @@
                               <option value="admin">Admin</option>
                               <option value="pegawai">Pegawai</option>
                             </select>
-                        </div>
+                          </div>
                         <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Tanggal Lahir<span class="text-danger"> *</span></label> <input type="date" id="tglLahir" name="tglLahir" placeholder="" value="{{ old('tglLahir', $user->tglLahir) }}"> </div>
                     </div>
                     <div class="row justify-content-between text-left">
@@ -111,6 +113,21 @@
                         <input type="hidden" id="id" name="id" placeholder="" value="{{ old('id', $user->id) }}">
                         <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Password<span class="text-danger"> *</span></label> <input type="password" id="password" name="password" placeholder="" > </div>
                     </div>
+                    @endif
+                    @if (auth()->user()->status == 'pegawai')
+                    <div class="row justify-content-between text-left">
+                      <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Foto Profil</label> <input type="file" id="foto" name="foto" placeholder="" > </div>
+                      <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Tanggal Lahir<span class="text-danger"> *</span></label> <input type="date" id="tglLahir" name="tglLahir" placeholder="" value="{{ old('tglLahir', $user->tglLahir) }}"> </div>
+                    </div>
+                    <div class="row justify-content-between text-left">
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Email<span class="text-danger"> *</span></label> <input type="email" id="email" name="email" placeholder="" value="{{ old('email', $user->email) }}"> </div>
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Password<span class="text-danger"> *</span></label> <input type="password" id="password" name="password" placeholder="" > </div>
+                      </div>
+                    <div class="row justify-content-end">
+                        <input type="hidden" id="id" name="id" placeholder="" value="{{ old('id', $user->id) }}">
+                        <input type="hidden" id="status" name="status" placeholder="" value="{{ old('status', $user->status) }}">
+                    </div>
+                    @endif
                     <div class="row justify-content-end">
                         <div class="form-group col-sm-6"> <button type="submit" class="btn-block btn-primary">Ubah</button> </div>
                     </div>
@@ -120,8 +137,10 @@
         </div>
       </div>
     </section>
-    <div
-        class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
+    @if (auth()->user()->status == 'pegawai')
+    <br><br>
+    @endif
+    <div class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
         <!-- Copyright -->
         <div class="text-white mb-3 mb-md-0">
           Copyright © 2023. All rights reserved.

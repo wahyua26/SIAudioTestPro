@@ -1,11 +1,21 @@
 <aside class="main-sidebar sidebar-light-primary elevation-4 bg-blue">
     <!-- Brand Logo -->
+    @if (auth()->user()->status == 'admin')
     <a href="{{ route('home') }}" class="brand-link">
       <img src="{{ asset('AdminLTE/dist/img/logo7.png') }}" alt="SIATP Logo" class="brand-image" style="opacity: 1">
       <span>
         SIATP
       </span>
     </a>
+    @endif
+    @if (auth()->user()->status == 'pegawai')
+    <a href="/homePegawai/{{ auth()->user()->id }}" class="brand-link">
+      <img src="{{ asset('AdminLTE/dist/img/logo7.png') }}" alt="SIATP Logo" class="brand-image" style="opacity: 1">
+      <span>
+        SIATP
+      </span>
+    </a>
+    @endif
 
     <!-- Sidebar -->
     <div class="sidebar">
@@ -104,7 +114,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{ route('rekomendasi') }}" class="nav-link">
               <i class="nav-icon fas fa-clipboard "></i>
               <p class="text-dark">Hasil Rekomendasi</p>
             </a>

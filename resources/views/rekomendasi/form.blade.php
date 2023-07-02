@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tambah Pegawai</title>
+  <title>Form Minta Rekomendasi</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -15,7 +15,6 @@
   <link rel="stylesheet" href="{{ asset('AdminLTE/dist/css/adminlte.min.css') }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
-  <link href='{{ asset('AdminLTE/dist/img/logo1.png') }}' rel='shortcut icon'>
   <style>
     .divider:after,
     .divider:before {
@@ -62,7 +61,8 @@
         }).catch(swal.noop);
     </script>
     @endif
-    <section>
+
+    <section class="vh-100">
       <div class="container-fluid h-custom">
         <div class="row d-flex justify-content-center align-items-center h-100">
           <div class="col-md-9 col-lg-6 col-xl-5">
@@ -71,8 +71,8 @@
           </div>
           <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
             <div class="card">
-                <h5 class="text-center mb-4"><b>TAMBAH PEGAWAI</h5>
-                @if ($errors->any())
+              <h5 class="text-center mb-4 font-weight-bold">Form Minta Rekomendasi</h5>
+              @if ($errors->any())
                   <div class="alert alert-danger">
                       <ul>
                           @foreach ($errors->all() as $error)
@@ -81,46 +81,25 @@
                       </ul>
                   </div>
                 @endif
-                <form class="form-card" action="/pegawai" method="post" enctype="multipart/form-data">
-                    @csrf
-                    <div class="row justify-content-between text-left">
-                        <div class="form-group col-sm-6 flex-column d-flex">
-                            <label class="form-control-label px-3">Jabatan<span class="text-danger"> *</span></label>
-                            <select id="jabatan" name="jabatan" class="form-control select" style="width: 100%;">
-                                @foreach ($jabatan as $item)
-                              <option value="{{ $item->id }}">{{ $item->jabatan }}</option>
-                              @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Nama Lengkap<span class="text-danger"> *</span></label> <input type="text" id="name" name="name" placeholder="" value="{{ old('name') }}"> </div>
-                    </div>
-                    <div class="row justify-content-between text-left">
-                        <div class="form-group col-sm-6 flex-column d-flex">
-                            <label class="form-control-label px-3">Status<span class="text-danger"> *</span></label>
-                            <select id="status" name="status" class="form-control select" style="width: 100%;">
-                              <option value="admin">Admin</option>
-                              <option value="pegawai">Pegawai</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Tanggal Lahir<span class="text-danger"> *</span></label> <input type="date" id="tglLahir" name="tglLahir" placeholder="" value="{{ old('tglLahir') }}"> </div>
-                    </div>
-                    <div class="row justify-content-between text-left">
-                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Foto Profil</label> <input type="file" id="foto" name="foto" placeholder="" > </div>
-                          <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Email<span class="text-danger"> *</span></label> <input type="email" id="email" name="email" placeholder="" value="{{ old('email') }}"> </div>
-                    </div>
-                    <div class="row justify-content-end">
-                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Password<span class="text-danger"> *</span></label> <input type="password" id="password" name="password" placeholder="" > </div>
-                    </div>
-                    <div class="row justify-content-end">
-                        <div class="form-group col-sm-6"> <button type="submit" class="btn-block btn-primary">Tambah</button> </div>
-                    </div>
-                </form>
-            </div>
+              <form class="form-card" action="/rekomendasi" method="post">
+                  @csrf
+                  <div class="form-group col flex-column d-flex">
+                    <label class="form-control-label px-3">Ruang Kerja<span class="text-danger"> *</span></label>
+                    <select id="ruangKerja" name="ruangKerja" class="form-control select" style="width: 100%;">
+                        @foreach ($ruang as $item)
+                      <option value="{{ $item->id }}">{{ $item->nama }}</option>
+                      @endforeach
+                    </select>
+                </div>
+                <div class="form-group col flex-column d-flex"> <label class="form-control-label px-3">Rata-Rata Hasil Audiometri<span class="text-danger"> *</span></label> <input type="text" id="jabatan" name="jabatan" placeholder="" value="{{ old('jabatan') }}"> </div>
+                <div class="form-group col flex-column d-flex"> <label class="form-control-label px-3">Divisi<span class="text-danger"> *</span></label> <input type="text" id="divisi" name="divisi" placeholder="" value="{{ old('divisi') }}" > </div>
+                <div class="form-group col"> <button type="submit" class="btn-block btn-primary">Minta Rekomendasi</button> </div>
+              </form>
+          </div>
           </div>
         </div>
       </div>
-    </section>
-    <div
+      <div
         class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
         <!-- Copyright -->
         <div class="text-white mb-3 mb-md-0">
@@ -134,6 +113,9 @@
         </div>
         <!-- Right -->
       </div>
+    </section>
+
+
 <!-- jQuery -->
 @include('layouts.script')
 </body>
