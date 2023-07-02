@@ -89,7 +89,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="row">
         <div class="col">
           <div>
-            <canvas id="Chart"></canvas>
+            <canvas id="chart"></canvas>
+            <input type="hidden" id="januari" value="{{ $januari }}">
+            <input type="hidden" id="februari" value="{{ $februari }}">
+            <input type="hidden" id="maret" value="{{ $maret }}">
+            <input type="hidden" id="april" value="{{ $april }}">
+            <input type="hidden" id="mei" value="{{ $mei }}">
+            <input type="hidden" id="juni" value="{{ $juni }}">
           </div>
         </div>
         <div class="col">
@@ -191,7 +197,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
-  const ctx = document.getElementById('Chart');
+  const januari = document.getElementById('januari').value;
+  const februari = document.getElementById('februari').value;
+  const maret = document.getElementById('maret').value;
+  const april = document.getElementById('april').value;
+  const mei = document.getElementById('mei').value;
+  const juni = document.getElementById('juni').value;
+  
+  const ctx = document.getElementById('chart');
 
   new Chart(ctx, {
     type: 'line',
@@ -199,7 +212,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       labels: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni'],
       datasets: [{
         label: 'Persentase Tingkat Pendengaran',
-        data: [65, 55, 76, 80, 60, 43],
+        data: [januari, februari, maret, april, mei, juni],
         borderWidth: 1
       }]
     },

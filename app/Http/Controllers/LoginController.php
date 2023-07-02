@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -21,7 +22,7 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            $user = DB::table('users')->where('users.email', $request->email)->first();
+            $user = User::where('users.email', $request->email)->first();
             //dd($request->email, $user->status);
             if($user->status == 'admin'){
                 return redirect()->intended('/home')->with('success','Anda Berhasil Masuk!');

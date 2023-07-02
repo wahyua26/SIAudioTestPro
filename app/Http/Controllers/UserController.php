@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Jabatan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
@@ -9,7 +10,7 @@ use App\Models\User;
 class UserController extends Controller
 {
     public function tambahPegawai(){
-        $jabatan = DB::table('jabatans')->get();
+        $jabatan = Jabatan::get();
         return view('user.tambahpegawai',['jabatan' => $jabatan]);
     }
 
@@ -55,14 +56,14 @@ class UserController extends Controller
     }
 
     public function editPegawai($id){
-        $jabatan = DB::table('jabatans')->get();
-        $user = DB::table('users')->where('id', '=', $id)->first();
+        $jabatan = Jabatan::get();
+        $user = User::where('id', '=', $id)->first();
         return view('user.editpegawai', ['user' => $user, 'jabatan' => $jabatan]);
     }
 
     public function editAkun($id){
-        $jabatan = DB::table('jabatans')->get();
-        $user = DB::table('users')->where('id', '=', $id)->first();
+        $jabatan = Jabatan::get();
+        $user = User::where('id', '=', $id)->first();
         return view('user.editakun', ['user' => $user, 'jabatan' => $jabatan]);
     }
     

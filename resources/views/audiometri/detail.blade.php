@@ -160,8 +160,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </div>
                     </div>
                     <div class="row justify-content-center">
-                        <a href="#" class="btn btn-info my-2"><i class="fas fa-file-pdf"></i> Cetak Detail</a>
-                    </div>
+                       {{-- <a href="/cetak-detail-audiometri/{{ $detail->id }}" class="btn btn-info my-2"><i class="fas fa-file-pdf"></i> Cetak Detail</a> --}}
+                       <button onclick="window.print()" class="btn btn-info my-2"><i class="fas fa-file-pdf"></i> Cetak Detail</button>
+                     </div>
                 </div>
               </div>
           </div>

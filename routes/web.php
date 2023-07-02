@@ -39,6 +39,7 @@ Route::group(['middleware' => ['auth','CekStatus:admin']], function () {
     Route::get('/jabatan', [MasterDataController::class,'jabatan'])->name('jabatan');
     Route::get('/audiometri', [AudiometriController::class,'index'])->name('audiometri');
     Route::get('/detail-audiometri/{id}', [AudiometriController::class,'detail'])->name('detail-audiometri');
+    Route::get('/cetak-detail-audiometri/{id}', [AudiometriController::class,'cetakDetail'])->name('cetak-detail-audiometri');
     Route::get('/tambah-pegawai', [UserController::class,'tambahPegawai'])->name('tambah-pegawai');
     Route::get('/tambah-jabatan', [MasterDataController::class,'tambahJabatan'])->name('tambah-jabatan');
     Route::get('/tambah-ruang', [MasterDataController::class,'tambahRuang'])->name('tambah-ruang');

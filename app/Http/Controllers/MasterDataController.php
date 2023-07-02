@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Jabatan;
+use App\Models\User;
 use App\Models\Workspace;
 use Illuminate\Http\Request;
 use Illuminate\Queue\Worker;
@@ -11,9 +12,9 @@ use Illuminate\Support\Facades\DB;
 class MasterDataController extends Controller
 {
     public function menu(){
-        $user = DB::table('users')->get();
-        $jabatan = DB::table('jabatans')->get();
-        $ruangan = DB::table('workspaces')->get();
+        $user = User::get();
+        $jabatan = Jabatan::get();
+        $ruangan = Workspace::get();
         return view('master.menu', ['user' => $user->count(), 'jabatan' => $jabatan->count(), 'ruangan' => $ruangan->count()]);
     }
 
@@ -24,7 +25,7 @@ class MasterDataController extends Controller
     }
 
     public function ruang(){
-        $ruang = DB::table('workspaces')->get();
+        $ruang = Workspace::get();
         return view('master.ruang', ['ruang' => $ruang]);
     }
 
@@ -35,7 +36,7 @@ class MasterDataController extends Controller
     }
 
     public function tambahJabatan(){
-        $ruang = DB::table('workspaces')->get();
+        $ruang = Workspace::get();
         return view('master.tambahjabatan', ['ruang' => $ruang]);
     }
 
@@ -61,14 +62,14 @@ class MasterDataController extends Controller
     }
 
     public function editJabatan($id){
-        $jabatan = DB::table('jabatans')->where('id', '=', $id)->first();
-        $ruang = DB::table('workspaces')->get();
+        $jabatan = Jabatan::where('id', '=', $id)->first();
+        $ruang = Workspace::get();
         return view('master.editjabatan', ['jabatan' => $jabatan, 'ruang' => $ruang]);
     }
 
     public function editRuang($id){
         //dd($id);
-        $ruang = DB::table('workspaces')->where('id', '=', $id)->first();
+        $ruang = Workspace::where('id', '=', $id)->first();
         return view('master.editruang', ['ruang' => $ruang]);
     }
 
