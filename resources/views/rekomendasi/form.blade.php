@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Form Minta Rekomendasi</title>
+  <title>{{ GoogleTranslate::trans('Form Minta Rekomendasi', app()->getLocale()) }}</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -71,7 +71,7 @@
           </div>
           <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
             <div class="card">
-              <h5 class="text-center mb-4 font-weight-bold">Form Minta Rekomendasi</h5>
+              <h3 class="text-center mb-4 font-weight-bold">{{ GoogleTranslate::trans('FORM MINTA REKOMENDASI', app()->getLocale()) }}</h3>
               @if ($errors->any())
                   <div class="alert alert-danger">
                       <ul>
@@ -82,18 +82,16 @@
                   </div>
                 @endif
               <form class="form-card" action="/rekomendasi" method="post">
-                  @csrf
-                  <div class="form-group col flex-column d-flex">
-                    <label class="form-control-label px-3">Ruang Kerja<span class="text-danger"> *</span></label>
-                    <select id="ruangKerja" name="ruangKerja" class="form-control select" style="width: 100%;">
-                        @foreach ($ruang as $item)
+                @csrf
+                <div class="form-group col flex-column d-flex">
+                  <label class="form-control-label px-3">{{ GoogleTranslate::trans('Ruang Kerja', app()->getLocale()) }}<span class="text-danger"> *</span></label>
+                  <select id="ruangKerja" name="ruangKerja" class="form-control select" style="width: 100%;">
+                    @foreach ($ruang as $item)
                       <option value="{{ $item->id }}">{{ $item->nama }}</option>
-                      @endforeach
-                    </select>
+                    @endforeach
+                  </select>
                 </div>
-                <div class="form-group col flex-column d-flex"> <label class="form-control-label px-3">Rata-Rata Hasil Audiometri<span class="text-danger"> *</span></label> <input type="text" id="jabatan" name="jabatan" placeholder="" value="{{ old('jabatan') }}"> </div>
-                <div class="form-group col flex-column d-flex"> <label class="form-control-label px-3">Divisi<span class="text-danger"> *</span></label> <input type="text" id="divisi" name="divisi" placeholder="" value="{{ old('divisi') }}" > </div>
-                <div class="form-group col"> <button type="submit" class="btn-block btn-primary">Minta Rekomendasi</button> </div>
+                <div class="form-group col"> <button type="submit" class="btn-block btn-primary">{{ GoogleTranslate::trans('Pilih Ruang Kerja', app()->getLocale()) }}</button> </div>
               </form>
           </div>
           </div>

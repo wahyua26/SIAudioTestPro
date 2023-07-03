@@ -4,9 +4,9 @@
 This is a starter template page. Use this page to start your new project from
 scratch. This page gets rid of all links and provides the needed markup only.
 -->
-<html lang="en">
+<html>
 <head>
-    <title>Data Master</title>
+    <title>@lang('menu.title')</title>
     @include('layouts.head')
 </head>
 <body class="hold-transition sidebar-mini">
@@ -67,7 +67,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm">
-            <h1 class="m-0 font-weight-bold">DATA MASTER</h1>
+            <h1 class="m-0 font-weight-bold">@lang('menu.h1')</h1>
           </div><!-- /.col -->
           <div class="col-sm">
             {{-- <ol class="breadcrumb float-sm-right">
@@ -88,36 +88,36 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <div class="small-box text-white">
             <div class="inner">
               <h3>{{ $user }}</h3>
-              <p>Data Pegawai</p>
+              <p>@lang('menu.pegawai')</p>
             </div>
             <div class="icon">
               <i class="nav-icon fas fa-users"></i>
             </div>
-            <a href="{{ route('pegawai') }}" class="small-box-footer text-white">More info <i class="fas fa-arrow-circle-right"></i></a>
+            <a href="{{ route('pegawai') }}" class="small-box-footer text-white">@lang('menu.lihat') <i class="fas fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <div class="col-lg-3">
           <div class="small-box text-white">
             <div class="inner">
               <h3>{{ $jabatan }}</h3>
-              <p>Data Posisi Pegawai</p>
+              <p>@lang('menu.posisi')</p>
             </div>
             <div class="icon">
               <i class="nav-icon fas fa-user-friends"></i>
             </div>
-            <a href="{{ route('jabatan') }}" class="small-box-footer text-white">More info <i class="fas fa-arrow-circle-right"></i></a>
+            <a href="{{ route('jabatan') }}" class="small-box-footer text-white">@lang('menu.lihat') <i class="fas fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <div class="col-lg-3">
           <div class="small-box text-white">
             <div class="inner">
               <h3>{{ $ruangan }}</h3>
-              <p>Data Ruang Kerja</p>
+              <p>@lang('menu.ruang')</p>
             </div>
             <div class="icon">
               <i class="nav-icon fas fa-building"></i>
             </div>
-            <a href="{{ route('ruang') }}" class="small-box-footer text-white">More info <i class="fas fa-arrow-circle-right"></i></a>
+            <a href="{{ route('ruang') }}" class="small-box-footer text-white">@lang('menu.lihat') <i class="fas fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <div class="col"></div>

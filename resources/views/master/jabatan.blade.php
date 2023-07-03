@@ -4,9 +4,9 @@
 This is a starter template page. Use this page to start your new project from
 scratch. This page gets rid of all links and provides the needed markup only.
 -->
-<html lang="en">
+<html>
 <head>
-    <title>Data Jabatan</title>
+    <title>{{ GoogleTranslate::trans('Data Posisi Pegawai', app()->getLocale()) }}</title>
     @include('layouts.head')
     <style>
       th {
@@ -72,7 +72,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm">
-            <h1 class="m-0 font-weight-bold">DATA POSISI PEGAWAI</h1>
+            <h1 class="m-0 font-weight-bold">{{ GoogleTranslate::trans('DATA POSISI PEGAWAI', app()->getLocale()) }}</h1>
           </div><!-- /.col -->
           <div class="col-sm">
             {{-- <ol class="breadcrumb float-sm-right">
@@ -94,7 +94,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <div class="col"></div>
         <div class="col">
           <div class="card">
-            <a href="{{ route('tambah-jabatan') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah Posisi Pegawai</a>
+            <a href="{{ route('tambah-jabatan') }}" class="btn btn-primary"><i class="fas fa-plus"></i> {{ GoogleTranslate::trans('Tambah Posisi Pegawai', app()->getLocale()) }}</a>
           </div>
         </div>
       </div>
@@ -103,10 +103,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <table class="table table-striped projects text-center">
             <tr>
                 <th>ID</th>
-                <th>Posisi</th>
-                <th>Divisi</th>
-                <th>Ruang Kerja</th>
-                <th>Aksi</th>
+                <th>{{ GoogleTranslate::trans('Posisi Pegawai', app()->getLocale()) }}</th>
+                <th>{{ GoogleTranslate::trans('Divisi', app()->getLocale()) }}</th>
+                <th>{{ GoogleTranslate::trans('Ruang Kerja', app()->getLocale()) }}</th>
+                <th>{{ GoogleTranslate::trans('Aksi', app()->getLocale()) }}</th>
             </tr> 
             @foreach ($jabatan as $item)
             <tr>
@@ -118,12 +118,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <a href="/edit-jabatan/{{ $item->id }}" class="btn btn-info btn-sm" href="#">
                       <i class="fas fa-pencil-alt">
                       </i>
-                      Edit
+                      {{ GoogleTranslate::trans('Ubah', app()->getLocale()) }}
                   </a>
                   <a onclick="return confirm('Apakah anda yakin?')" href="/hapus-jabatan/{{ $item->id }}" class="btn btn-danger btn-sm">
                       <i class="fas fa-trash">
                       </i>
-                      Delete
+                      {{ GoogleTranslate::trans('Delete', app()->getLocale()) }}
                   </a>
               </td>
             </tr> 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -72,12 +72,12 @@
           </div>
           <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
             <div class="card">
-              <h5 class="text-center mb-4 font-weight-bold">MASUK</h5>
+              <h5 class="text-center mb-4 font-weight-bold">@lang('login.masuk')</h5>
               <form class="form-card" action="/login" method="post">
                   @csrf
-                  <div class="form-group col flex-column d-flex"> <label class="form-control-label px-3">Email<span class="text-danger"> *</span></label> <input type="email" id="email" name="email" placeholder="" value="{{ old('email') }}"> </div>
-                  <div class="form-group col flex-column d-flex"> <label class="form-control-label px-3">Password<span class="text-danger"> *</span></label> <input type="password" id="password" name="password" placeholder="" > </div>
-                  <div class="form-group col"> <button type="submit" class="btn-block btn-primary">Masuk</button> </div>
+                  <div class="form-group col flex-column d-flex"> <label class="form-control-label px-3">@lang('login.email')<span class="text-danger"> *</span></label> <input type="email" id="email" name="email" placeholder="" value="{{ old('email') }}"> </div>
+                  <div class="form-group col flex-column d-flex"> <label class="form-control-label px-3">@lang('login.password')<span class="text-danger"> *</span></label> <input type="password" id="password" name="password" placeholder="" > </div>
+                  <div class="form-group col"> <button type="submit" class="btn-block btn-primary">@lang('login.button')</button> </div>
               </form>
           </div>
           </div>

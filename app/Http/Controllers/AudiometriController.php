@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\App;
 use App\Models\Audiometri;
 use App\Models\Rekomendasi;
 use Illuminate\Http\Request;
@@ -58,8 +59,10 @@ class AudiometriController extends Controller
     }
 
     public function home(){
+
         $audiometri = Audiometri::get();
         $rekomendasi = Rekomendasi::get();
+        
         $from1 = date('2023-01-01');
         $to1 = date('2023-01-31');
         $januari = Audiometri::whereBetween('tanggal', [$from1, $to1])->avg('hasil');
@@ -80,12 +83,34 @@ class AudiometriController extends Controller
         $to6 = date('2023-06-30');
         $juni = Audiometri::whereBetween('tanggal', [$from6, $to6])->avg('hasil');
         //dd($audiometri->count());
-        return view('home', ['audiometri' => $audiometri->count(), 'rekomendasi' => $rekomendasi->count(), 'januari' => $januari, 'februari' => $februari, 'maret' => $maret, 'april' => $april, 'mei' => $mei, 'juni' => $juni ]);
+        $rekap = DB::table('rekomendasis')->join('workspaces', 'workspaces.id', '=', 'rekomendasis.workspace_id')->get();
+        //dd($rekap);
+        return view('home', [ 'rekap' => $rekap, 'audiometri' => $audiometri->count(), 'rekomendasi' => $rekomendasi->count(), 'januari' => $januari, 'februari' => $februari, 'maret' => $maret, 'april' => $april, 'mei' => $mei, 'juni' => $juni ]);
     }
 
     public function homePegawai($id){
-        $audiometri = DB::table('audiometris')->join('users', 'audiometris.user_id', '=', 'users.id')->where('users.id', $id)->get();
+        $from1 = date('2023-01-01');
+        $to1 = date('2023-01-31');
+        $januari = Audiometri::where('audiometris.user_id', $id)->whereBetween('tanggal', [$from1, $to1])->avg('hasil');
+        //dd($januari);
+        $from2 = date('2023-02-01');
+        $to2 = date('2023-02-29');
+        $februari = Audiometri::where('audiometris.user_id', $id)->whereBetween('tanggal', [$from2, $to2])->avg('hasil');
+        $from3 = date('2023-03-01');
+        $to3 = date('2023-03-31');
+        $maret = Audiometri::where('audiometris.user_id', $id)->whereBetween('tanggal', [$from3, $to3])->avg('hasil');
+        $from4 = date('2023-04-01');
+        $to4 = date('2023-04-30');
+        $april = Audiometri::where('audiometris.user_id', $id)->whereBetween('tanggal', [$from4, $to4])->avg('hasil');
+        $from5 = date('2023-05-01');
+        $to5 = date('2023-05-31');
+        $mei = Audiometri::where('audiometris.user_id', $id)->whereBetween('tanggal', [$from5, $to5])->avg('hasil');
+        $from6 = date('2023-06-01');
+        $to6 = date('2023-06-30');
+        $juni = Audiometri::where('audiometris.user_id', $id)->whereBetween('tanggal', [$from6, $to6])->avg('hasil');
+
+        $audiometri = Audiometri::with('user')->where('audiometris.user_id', $id)->get();
         //dd($audiometri->count());
-        return view('homePegawai', ['audiometri' => $audiometri->count()]);
+        return view('homePegawai', ['audiometri' => $audiometri->count(), 'januari' => $januari, 'februari' => $februari, 'maret' => $maret, 'april' => $april, 'mei' => $mei, 'juni' => $juni]);
     }
 }

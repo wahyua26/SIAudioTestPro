@@ -9,6 +9,15 @@ class Rekomendasi extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'workspace_id',
+        'tanggal',
+        'waktu',
+        'rataHasil',
+        'rataUsia',
+        'rekomendasi',
+    ];
+
     public function workspace(){
         return $this->belongsTo(Workspace::class, 'workspace_id');
     }

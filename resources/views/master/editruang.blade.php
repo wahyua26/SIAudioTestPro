@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Ubah Detail Ruang Kerja</title>
+  <title>{{ GoogleTranslate::trans('Ubah Detail Ruang Kerja', app()->getLocale()) }}</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -71,7 +71,7 @@
           </div>
           <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
             <div class="card">
-              <h5 class="text-center mb-4 font-weight-bold">UBAH DETAIL RUANG KERJA</h5>
+              <h5 class="text-center mb-4 font-weight-bold">{{ GoogleTranslate::trans('UBAH DETAIL RUANG KERJA', app()->getLocale()) }}</h5>
               @if ($errors->any())
                   <div class="alert alert-danger">
                       <ul>
@@ -83,11 +83,11 @@
                 @endif
               <form class="form-card" action="/update-ruang" method="post">
                   @csrf
-                  <div class="form-group col flex-column d-flex"> <label class="form-control-label px-3">Nama Ruangan<span class="text-danger"> *</span></label> <input type="text" id="nama" name="nama" placeholder=""  value="{{ old('nama', $ruang->nama) }}"> </div>
-                  <div class="form-group col flex-column d-flex"> <label class="form-control-label px-3">Lokasi<span class="text-danger"> *</span></label> <input type="text" id="lokasi" name="lokasi" placeholder="" value="{{ old('lokasi', $ruang->lokasi) }}" > </div>
+                  <div class="form-group col flex-column d-flex"> <label class="form-control-label px-3">{{ GoogleTranslate::trans('Nama Ruangan', app()->getLocale()) }}<span class="text-danger"> *</span></label> <input type="text" id="nama" name="nama" placeholder=""  value="{{ old('nama', $ruang->nama) }}"> </div>
+                  <div class="form-group col flex-column d-flex"> <label class="form-control-label px-3">{{ GoogleTranslate::trans('Lokasi', app()->getLocale()) }}<span class="text-danger"> *</span></label> <input type="text" id="lokasi" name="lokasi" placeholder="" value="{{ old('lokasi', $ruang->lokasi) }}" > </div>
                     <input type="hidden" id="id" name="id" value="{{ old('id', $ruang->id) }}">
-                    <div class="form-group col flex-column d-flex"> <label class="form-control-label px-3">Tingkat Kebisingan<span class="text-danger"> *</span></label> <input type="text" id="bising" name="bising" placeholder="" value="{{ old('bising', $ruang->bising) }}" > </div>
-                  <div class="form-group col"> <button type="submit" class="btn-block btn-primary">Ubah</button> </div>
+                    <div class="form-group col flex-column d-flex"> <label class="form-control-label px-3">{{ GoogleTranslate::trans('Tingkat Kebisingan', app()->getLocale()) }}<span class="text-danger"> *</span></label> <input type="text" id="bising" name="bising" placeholder="" value="{{ old('bising', $ruang->bising) }}" > </div>
+                  <div class="form-group col"> <button type="submit" class="btn-block btn-primary">{{ GoogleTranslate::trans('Ubah', app()->getLocale()) }}</button> </div>
               </form>
           </div>
           </div>

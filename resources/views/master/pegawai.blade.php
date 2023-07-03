@@ -4,9 +4,9 @@
 This is a starter template page. Use this page to start your new project from
 scratch. This page gets rid of all links and provides the needed markup only.
 -->
-<html lang="en">
+<html>
 <head>
-    <title>Data Pegawai</title>
+    <title>@lang('pegawai.title')</title>
     @include('layouts.head')
     <style>
       th {
@@ -72,7 +72,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm">
-            <h1 class="m-0 font-weight-bold">DATA PEGAWAI</h1>
+            <h1 class="m-0 font-weight-bold">@lang('pegawai.h1')</h1>
           </div><!-- /.col -->
           <div class="col-sm">
             {{-- <ol class="breadcrumb float-sm-right">
@@ -95,20 +95,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <div class="col"></div>
           <div class="col">
             <div class="card">
-              <a href="{{ route('tambah-pegawai') }}" class="btn btn-primary"><i class="fas fa-user-plus"></i> Tambah Pegawai</a>
+              <a href="{{ route('tambah-pegawai') }}" class="btn btn-primary"><i class="fas fa-user-plus"></i> @lang('pegawai.tambah')</a>
             </div>
           </div>
         </div>
         <div class="row">
           <table class="table table-striped projects text-center">
             <tr>
-                <th>Nama Lengkap</th>
-                <th>Email</th>
-                <th>Tanggal Lahir</th>
-                <th>Jabatan</th>
-                <th>Ruang Kerja</th>
-                <th>Status</th>
-                <th>Aksi</th>
+                <th>@lang('pegawai.nama')</th>
+                <th>@lang('pegawai.email')</th>
+                <th>@lang('pegawai.tanggal')</th>
+                <th>@lang('pegawai.jabatan')</th>
+                <th>@lang('pegawai.ruang')</th>
+                <th>@lang('pegawai.status')</th>
+                <th>@lang('pegawai.aksi')</th>
             </tr> 
             @foreach ($pegawai as $item)
             <tr>
@@ -122,12 +122,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <a href="/edit-pegawai/{{ $item->id }}" class="btn btn-info btn-sm">
                       <i class="fas fa-pencil-alt">
                       </i>
-                      Edit
+                      @lang('pegawai.ubah')
                   </a>
                   <a onclick="return confirm('Apakah anda yakin?')" href="/hapus-pegawai/{{ $item->id }}" class="btn btn-danger btn-sm" href="#">
                       <i class="fas fa-trash">
                       </i>
-                      Delete
+                      @lang('pegawai.hapus')
                   </a>
               </td>
             </tr> 

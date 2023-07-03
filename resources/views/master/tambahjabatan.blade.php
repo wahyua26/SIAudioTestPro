@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tambah Posisi Pegawai</title>
+  <title>{{ GoogleTranslate::trans('Tambah Posisi Pegawai', app()->getLocale()) }}</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -71,7 +71,7 @@
           </div>
           <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
             <div class="card">
-              <h5 class="text-center mb-4 font-weight-bold">TAMBAH POSISI PEGAWAI</h5>
+              <h5 class="text-center mb-4 font-weight-bold">{{ GoogleTranslate::trans('TAMBAH POSISI PEGAWAI', app()->getLocale()) }}</h5>
               @if ($errors->any())
                   <div class="alert alert-danger">
                       <ul>
@@ -83,17 +83,17 @@
                 @endif
               <form class="form-card" action="/jabatan" method="post">
                   @csrf
-                  <div class="form-group col flex-column d-flex"> <label class="form-control-label px-3">Nama Posisi Pegawai<span class="text-danger"> *</span></label> <input type="text" id="jabatan" name="jabatan" placeholder="" value="{{ old('jabatan') }}"> </div>
-                  <div class="form-group col flex-column d-flex"> <label class="form-control-label px-3">Divisi<span class="text-danger"> *</span></label> <input type="text" id="divisi" name="divisi" placeholder="" value="{{ old('divisi') }}" > </div>
+                  <div class="form-group col flex-column d-flex"> <label class="form-control-label px-3">{{ GoogleTranslate::trans('Nama Posisi Pegawai', app()->getLocale()) }}<span class="text-danger"> *</span></label> <input type="text" id="jabatan" name="jabatan" placeholder="" value="{{ old('jabatan') }}"> </div>
+                  <div class="form-group col flex-column d-flex"> <label class="form-control-label px-3">{{ GoogleTranslate::trans('Divisi', app()->getLocale()) }}<span class="text-danger"> *</span></label> <input type="text" id="divisi" name="divisi" placeholder="" value="{{ old('divisi') }}" > </div>
                   <div class="form-group col flex-column d-flex">
-                    <label class="form-control-label px-3">Ruang Kerja<span class="text-danger"> *</span></label>
+                    <label class="form-control-label px-3">{{ GoogleTranslate::trans('Ruang Kerja', app()->getLocale()) }}<span class="text-danger"> *</span></label>
                     <select id="ruangKerja" name="ruangKerja" class="form-control select" style="width: 100%;">
                         @foreach ($ruang as $item)
                       <option value="{{ $item->id }}">{{ $item->nama }}</option>
                       @endforeach
                     </select>
                 </div>
-                  <div class="form-group col"> <button type="submit" class="btn-block btn-primary">Tambah</button> </div>
+                  <div class="form-group col"> <button type="submit" class="btn-block btn-primary">{{ GoogleTranslate::trans('Tambah', app()->getLocale()) }}</button> </div>
               </form>
           </div>
           </div>

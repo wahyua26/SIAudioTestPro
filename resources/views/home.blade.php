@@ -4,7 +4,7 @@
 This is a starter template page. Use this page to start your new project from
 scratch. This page gets rid of all links and provides the needed markup only.
 -->
-<html lang="en">
+<html>
 <head>
     <title>Home</title>
     @include('layouts.head')
@@ -99,45 +99,28 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </div>
         </div>
         <div class="col">
+          {{-- @lang('home.keterangan') --}}
+          {{ GoogleTranslate::trans('Keterangan: (*) Rata-rata', app()->getLocale()) }}
           <table id="example2" class="table table-bordered table-striped table-hover dataTable dtr-inline" aria-describedby="example2_info">
             <thead>
               <tr>
-                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Ruang Kerja</th>
-                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">Tingkat Kebisingan</th>
-                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" >Rata-Rata Hasil Audiometri</th>
-                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" >Rata-Rata Usia</th>
-                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" >Rekomendasi</th>
+                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">@lang('home.ruang')</th>
+                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">@lang('home.bising')</th>
+                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" >@lang('home.hasil')*</th>
+                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" >@lang('home.usia')*</th>
+                <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" >@lang('home.rekomendasi')</th>
               </tr>
             </thead>
             <tbody class="text-center">
-              <tr class="odd">
-                <td>Gudang Utama</td>
-                <td>90 db</td>
-                <td>50%</td>
-                <td>60 Tahun</td>
-                <td>Pengecekan ruang kerja dan pemeriksaan pegawai usia lanjut</td>
-              </tr>
-              <tr class="even">
-                <td>Ruang Distribusi</td>
-                <td>76 db</td>
-                <td>82%</td>
-                <td>38 Tahun</td>
-                <td>Ruang kerja sudah baik begitu pula dengan pegawainya</td>
-              </tr>
-              <tr class="odd">
-                <td>Ruang Produksi</td>
-                <td>88 db</td>
-                <td>85%</td>
-                <td>40 Tahun</td>
-                <td>Pengecekan ruang kerja</td>
-              </tr>
-              <tr class="even">
-                <td>Kantor Admin</td>
-                <td>65 db</td>
-                <td>55%</td>
-                <td>45 Tahun</td>
-                <td>Pemeriksaan pegawai</td>
-              </tr>
+              @foreach ($rekap as $item)
+              <tr>
+                  <td>{{ $item->nama }}</td>
+                  <td>{{ $item->bising }} dB</td>
+                  <td>{{ $item->rataHasil }}%</td>
+                  <td>{{ $item->rataUsia }} @lang('home.tahun')</td>
+                  <td>{{ $item->rekomendasi }}</td>
+              </tr> 
+              @endforeach 
             </tbody>
           </table>
         </div>
@@ -149,36 +132,36 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <div class="small-box text-white">
             <div class="inner">
               <h3>{{ $audiometri }}</h3>
-              <p>Hasil Audiometri</p>
+              <p>@lang('home.menuAudiometri')</p>
             </div>
             <div class="icon">
               <i class="nav-icon fas fa-file-medical"></i>
             </div>
-            <a href="{{ route('audiometri') }}" class="small-box-footer text-white">More info <i class="fas fa-arrow-circle-right"></i></a>
+            <a href="{{ route('audiometri') }}" class="small-box-footer text-white">@lang('home.lihat') <i class="fas fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <div class="col-lg-3">
           <div class="small-box text-white">
             <div class="inner">
               <h3 class="h3">5</h3>
-              <p>Data Master</p>
+              <p>@lang('home.menuData')</p>
             </div>
             <div class="icon">
               <i class="nav-icon fas fa-table"></i>
             </div>
-            <a href="{{ route('menu') }}" class="small-box-footer text-white">More info <i class="fas fa-arrow-circle-right"></i></a>
+            <a href="{{ route('menu') }}" class="small-box-footer text-white">@lang('home.lihat') <i class="fas fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <div class="col-lg-3">
           <div class="small-box text-white">
             <div class="inner">
               <h3>{{ $rekomendasi }}</h3>
-              <p>Hasil Rekomendasi</p>
+              <p>@lang('home.menuRekomendasi')</p>
             </div>
             <div class="icon">
               <i class="nav-icon fas fa-clipboard"></i>
             </div>
-            <a href="{{ route('rekomendasi') }}" class="small-box-footer text-white">More info <i class="fas fa-arrow-circle-right"></i></a>
+            <a href="{{ route('rekomendasi') }}" class="small-box-footer text-white">@lang('home.lihat') <i class="fas fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <div class="col"></div>

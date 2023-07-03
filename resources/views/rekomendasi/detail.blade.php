@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ GoogleTranslate::trans('Edit Employee Detail', app()->getLocale()) }}</title>
+  <title>{{ GoogleTranslate::trans('Form Minta Rekomendasi', app()->getLocale()) }}</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -15,7 +15,6 @@
   <link rel="stylesheet" href="{{ asset('AdminLTE/dist/css/adminlte.min.css') }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
-  <link href='{{ asset('AdminLTE/dist/img/logo1.png') }}' rel='shortcut icon'>
   <style>
     .divider:after,
     .divider:before {
@@ -62,7 +61,8 @@
         }).catch(swal.noop);
     </script>
     @endif
-    <section>
+
+    <section class="vh-100">
       <div class="container-fluid h-custom">
         <div class="row d-flex justify-content-center align-items-center h-100">
           <div class="col-md-9 col-lg-6 col-xl-5">
@@ -71,8 +71,9 @@
           </div>
           <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
             <div class="card">
-                <h5 class="text-center mb-4"><b>{{ GoogleTranslate::trans('EDIT EMPLOYEE DETAIL', app()->getLocale()) }}</h5>
-                @if ($errors->any())
+              <h3 class="text-center mb-4 font-weight-bold">{{ GoogleTranslate::trans('FORM MINTA REKOMENDASI', app()->getLocale()) }}</h3>
+              <h5 class="text-center mb-4 font-weight-bold">{{ GoogleTranslate::trans('Detail Ruang Kerja', app()->getLocale()) }}</h5>
+              @if ($errors->any())
                   <div class="alert alert-danger">
                       <ul>
                           @foreach ($errors->all() as $error)
@@ -81,47 +82,25 @@
                       </ul>
                   </div>
                 @endif
-                <form class="form-card" action="/update-pegawai" method="post" enctype="multipart/form-data">
-                    @csrf
-                    <div class="row justify-content-between text-left">
-                        <div class="form-group col-sm-6 flex-column d-flex">
-                            <label class="form-control-label px-3">{{ GoogleTranslate::trans('Employee Position', app()->getLocale()) }}<span class="text-danger"> *</span></label>
-                            <select id="jabatan" name="jabatan" class="form-control select" style="width: 100%;">
-                                @foreach ($jabatan as $item)
-                              <option value="{{ $item->id }}">{{ $item->jabatan }}</option>
-                              @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">{{ GoogleTranslate::trans('Nama Lengkap', app()->getLocale()) }}<span class="text-danger"> *</span></label> <input type="text" id="name" name="name" placeholder="" value="{{ old('name', $user->name) }}"> </div>
-                    </div>
-                    <div class="row justify-content-between text-left">
-                        <div class="form-group col-sm-6 flex-column d-flex">
-                            <label class="form-control-label px-3">Status<span class="text-danger"> *</span></label>
-                            <select id="status" name="status" class="form-control select" style="width: 100%;">
-                              <option value="admin">{{ GoogleTranslate::trans('Admin', app()->getLocale()) }}</option>
-                              <option value="pegawai">{{ GoogleTranslate::trans('Employee', app()->getLocale()) }}</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">{{ GoogleTranslate::trans('Tanggal Lahir', app()->getLocale()) }}<span class="text-danger"> *</span></label> <input type="date" id="tglLahir" name="tglLahir" placeholder="" value="{{ old('tglLahir', $user->tglLahir) }}"> </div>
-                    </div>
-                    <div class="row justify-content-between text-left">
-                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">{{ GoogleTranslate::trans('Foto Profil', app()->getLocale()) }}</label> <input type="file" id="foto" name="foto" placeholder="" > </div>
-                          <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">{{ GoogleTranslate::trans('Alamat Email', app()->getLocale()) }}<span class="text-danger"> *</span></label> <input type="email" id="email" name="email" placeholder="" value="{{ old('email', $user->email) }}"> </div>
-                    </div>
-                    <div class="row justify-content-end">
-                        <input type="hidden" id="id" name="id" placeholder="" value="{{ old('id', $user->id) }}">
-                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">{{ GoogleTranslate::trans('Kata Sandi', app()->getLocale()) }}<span class="text-danger"> *</span></label> <input type="password" id="password" name="password" placeholder="" > </div>
-                    </div>
-                    <div class="row justify-content-end">
-                        <div class="form-group col-sm-6"> <button type="submit" class="btn-block btn-primary">{{ GoogleTranslate::trans('Ubah', app()->getLocale()) }}</button> </div>
-                    </div>
-                </form>
-            </div>
+              <form class="form-card" action="/minta-rekomendasi" method="post">
+                @csrf
+                <div class="form-group col flex-column d-flex">
+                  <label class="form-control-label px-3">{{ GoogleTranslate::trans('Ruang Kerja', app()->getLocale()) }} : {{ $ruang->nama }}</label>
+                  <label class="form-control-label px-3">{{ GoogleTranslate::trans('Lokasi', app()->getLocale()) }} : {{ $ruang->lokasi }}</label>
+                  <label class="form-control-label px-3">{{ GoogleTranslate::trans('Tingkat Kebisingan', app()->getLocale()) }} : {{ $ruang->bising }} dB</label>
+                  <input type="hidden" id="id" name="id" value="{{ $ruang->id }}">
+                  <label class="form-control-label px-3">{{ GoogleTranslate::trans('Rata-Rata Hasil Audiometri', app()->getLocale()) }} : {{ $hasil }}%</label>
+                  <input type="hidden" id="hasil" name="hasil" value="{{ $hasil }}">
+                  <label class="form-control-label px-3">{{ GoogleTranslate::trans('Rata-Rata Usia Pegawai', app()->getLocale()) }} : {{ $usia }} {{ GoogleTranslate::trans('Tahun', app()->getLocale()) }}</label>
+                  <input type="hidden" id="usia" name="usia" value="{{ $usia }}">
+                </div>
+                <div class="form-group col"> <button type="submit" class="btn-block btn-primary">{{ GoogleTranslate::trans('Minta Rekomendasi', app()->getLocale()) }}</button> </div>
+              </form>
+          </div>
           </div>
         </div>
       </div>
-    </section>
-    <div
+      <div
         class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
         <!-- Copyright -->
         <div class="text-white mb-3 mb-md-0">
@@ -135,6 +114,9 @@
         </div>
         <!-- Right -->
       </div>
+    </section>
+
+
 <!-- jQuery -->
 @include('layouts.script')
 </body>

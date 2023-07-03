@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tambah Pegawai</title>
+  <title>{{ GoogleTranslate::trans('Add Employee', app()->getLocale()) }}</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -71,7 +71,7 @@
           </div>
           <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
             <div class="card">
-                <h5 class="text-center mb-4"><b>TAMBAH PEGAWAI</h5>
+                <h5 class="text-center mb-4"><b>{{ GoogleTranslate::trans('ADD EMPLOYEE', app()->getLocale()) }}</h5>
                 @if ($errors->any())
                   <div class="alert alert-danger">
                       <ul>
@@ -85,34 +85,34 @@
                     @csrf
                     <div class="row justify-content-between text-left">
                         <div class="form-group col-sm-6 flex-column d-flex">
-                            <label class="form-control-label px-3">Jabatan<span class="text-danger"> *</span></label>
+                            <label class="form-control-label px-3">{{ GoogleTranslate::trans('Employee Position', app()->getLocale()) }}<span class="text-danger"> *</span></label>
                             <select id="jabatan" name="jabatan" class="form-control select" style="width: 100%;">
                                 @foreach ($jabatan as $item)
                               <option value="{{ $item->id }}">{{ $item->jabatan }}</option>
                               @endforeach
                             </select>
                         </div>
-                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Nama Lengkap<span class="text-danger"> *</span></label> <input type="text" id="name" name="name" placeholder="" value="{{ old('name') }}"> </div>
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">{{ GoogleTranslate::trans('Nama Lengkap', app()->getLocale()) }}<span class="text-danger"> *</span></label> <input type="text" id="name" name="name" placeholder="" value="{{ old('name') }}"> </div>
                     </div>
                     <div class="row justify-content-between text-left">
                         <div class="form-group col-sm-6 flex-column d-flex">
-                            <label class="form-control-label px-3">Status<span class="text-danger"> *</span></label>
+                            <label class="form-control-label px-3">{{ GoogleTranslate::trans('Status', app()->getLocale()) }}<span class="text-danger"> *</span></label>
                             <select id="status" name="status" class="form-control select" style="width: 100%;">
-                              <option value="admin">Admin</option>
-                              <option value="pegawai">Pegawai</option>
+                              <option value="admin">{{ GoogleTranslate::trans('Admin', app()->getLocale()) }}</option>
+                              <option value="pegawai">{{ GoogleTranslate::trans('Employee', app()->getLocale()) }}</option>
                             </select>
                         </div>
-                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Tanggal Lahir<span class="text-danger"> *</span></label> <input type="date" id="tglLahir" name="tglLahir" placeholder="" value="{{ old('tglLahir') }}"> </div>
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">{{ GoogleTranslate::trans('Tanggal Lahir', app()->getLocale()) }}<span class="text-danger"> *</span></label> <input type="date" id="tglLahir" name="tglLahir" placeholder="" value="{{ old('tglLahir') }}"> </div>
                     </div>
                     <div class="row justify-content-between text-left">
-                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Foto Profil</label> <input type="file" id="foto" name="foto" placeholder="" > </div>
-                          <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Email<span class="text-danger"> *</span></label> <input type="email" id="email" name="email" placeholder="" value="{{ old('email') }}"> </div>
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">{{ GoogleTranslate::trans('Foto Profil', app()->getLocale()) }}</label> <input type="file" id="foto" name="foto" placeholder="" > </div>
+                          <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">{{ GoogleTranslate::trans(' Alamat Email', app()->getLocale()) }}<span class="text-danger"> *</span></label> <input type="email" id="email" name="email" placeholder="" value="{{ old('email') }}"> </div>
                     </div>
                     <div class="row justify-content-end">
-                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Password<span class="text-danger"> *</span></label> <input type="password" id="password" name="password" placeholder="" > </div>
+                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">{{ GoogleTranslate::trans('Kata Sandi', app()->getLocale()) }}<span class="text-danger"> *</span></label> <input type="password" id="password" name="password" placeholder="" > </div>
                     </div>
                     <div class="row justify-content-end">
-                        <div class="form-group col-sm-6"> <button type="submit" class="btn-block btn-primary">Tambah</button> </div>
+                        <div class="form-group col-sm-6"> <button type="submit" class="btn-block btn-primary">{{ GoogleTranslate::trans('Tambah', app()->getLocale()) }}</button> </div>
                     </div>
                 </form>
             </div>

@@ -9,6 +9,22 @@
       </li> --}}
     </ul>
 
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <i class="fas fa-globe"></i>
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <a href="lang/id" class="dropdown-item">
+            Indonesia
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="lang/en" class="dropdown-item">
+            English
+          </a>
+        </div>
+      </li>
+    </ul>
     {{-- <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Navbar Search -->

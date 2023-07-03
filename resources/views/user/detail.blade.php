@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Detail Akun</title>
+  <title>{{ GoogleTranslate::trans('Detail Akun', app()->getLocale()) }}</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -87,13 +87,13 @@
                         <form method="post" action="{{ route('update-foto-profile') }}" enctype="multipart/form-data">
                           <div class="modal-content">
                             <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModalLabel">Import Foto Profil</h5>
+                              <h5 class="modal-title" id="exampleModalLabel">{{ GoogleTranslate::trans('Import Foto Profil', app()->getLocale()) }}</h5>
                             </div>
                             <div class="modal-body">
                  
                               {{ csrf_field() }}
                  
-                              <label>Pilih Foto Profil</label>
+                              <label>{{ GoogleTranslate::trans('Pilih Foto Profil', app()->getLocale()) }}</label>
                               <div class="form-group">
                                 <input type="file" name="foto" required="required" accept="image/png, image/jpeg, image/jpg">
                                 <input type="hidden" name="id" value="{{ $user->id }}">
@@ -101,8 +101,8 @@
                  
                             </div>
                             <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
-                              <button type="submit" class="btn btn-primary">Pilih</button>
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ GoogleTranslate::trans('Back', app()->getLocale()) }}</button>
+                              <button type="submit" class="btn btn-primary">{{ GoogleTranslate::trans('Pilih', app()->getLocale()) }}</button>
                             </div>
                           </div>
                         </form>
@@ -118,7 +118,7 @@
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Nama Lengkap</label>
+                                                <label>{{ GoogleTranslate::trans('Nama Lengkap', app()->getLocale()) }}</label>
                                             </div>
                                             <div class="col-md-6">
                                                 <p>{{ $user->name }}</p>
@@ -126,7 +126,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Email</label>
+                                                <label>{{ GoogleTranslate::trans('Alamat Email', app()->getLocale()) }}</label>
                                             </div>
                                             <div class="col-md-6">
                                                 <p>{{ $user->email }}</p>
@@ -134,7 +134,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Tanggal Lahir</label>
+                                                <label>{{ GoogleTranslate::trans('Tanggal Lahir', app()->getLocale()) }}</label>
                                             </div>
                                             <div class="col-md-6">
                                                 <p>{{ $user->tglLahir }}</p>
@@ -142,7 +142,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Posisi Pegawai</label>
+                                                <label>{{ GoogleTranslate::trans('Posisi Pegawai', app()->getLocale()) }}</label>
                                             </div>
                                             <div class="col-md-6">
                                                 <p>{{ $user->jabatan }}</p>
@@ -150,7 +150,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Ruang Kerja</label>
+                                                <label>{{ GoogleTranslate::trans('Ruang Kerja', app()->getLocale()) }}</label>
                                             </div>
                                             <div class="col-md-6">
                                                 <p>{{ $user->nama }}</p>
@@ -158,7 +158,7 @@
                                         </div>
                             </div>
                         
-                         <button class="profile_button px-5 bg-primary"><a href="/edit-akun/{{ $user->id }}">Ubah Detail Akun</a></button>
+                         <button class="profile_button px-5 bg-primary"><a href="/edit-akun/{{ $user->id }}">{{ GoogleTranslate::trans('Ubah Detail Akun', app()->getLocale()) }}</a></button>
             
                     </div>
                            

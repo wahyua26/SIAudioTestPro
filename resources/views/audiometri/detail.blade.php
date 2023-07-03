@@ -4,9 +4,9 @@
 This is a starter template page. Use this page to start your new project from
 scratch. This page gets rid of all links and provides the needed markup only.
 -->
-<html lang="en">
+<html>
 <head>
-    <title>Detail Hasil Audiometri</title>
+    <title>@lang('detailAudiometri.title')</title>
     @include('layouts.head')
     <style>
       th {
@@ -59,7 +59,155 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <div class="wrapper ">
 
   <!-- Navbar -->
-  @include('layouts.navbar')
+  {{-- @include('layouts.navbar') --}}
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light bg-primary">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+      </li>
+      {{-- <li class="nav-item d-none d-sm-inline-block">
+        <a href="#" class="nav-link">Contact</a>
+      </li> --}}
+    </ul>
+
+    {{-- <ul class="navbar-nav ml-auto">
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <i class="fas fa-globe"></i>
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <a href="lang/id" class="dropdown-item">
+            Indonesia
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="lang/en" class="dropdown-item">
+            English
+          </a>
+        </div>
+      </li>
+    </ul> --}}
+    {{-- <!-- Right navbar links -->
+    <ul class="navbar-nav ml-auto">
+      <!-- Navbar Search -->
+      <li class="nav-item">
+        <a class="nav-link" data-widget="navbar-search" href="#" role="button">
+          <i class="fas fa-search"></i>
+        </a>
+        <div class="navbar-search-block">
+          <form class="form-inline">
+            <div class="input-group input-group-sm">
+              <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+              <div class="input-group-append">
+                <button class="btn btn-navbar" type="submit">
+                  <i class="fas fa-search"></i>
+                </button>
+                <button class="btn btn-navbar" type="button" data-widget="navbar-search">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </li>
+
+      <!-- Messages Dropdown Menu -->
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <i class="far fa-comments"></i>
+          <span class="badge badge-danger navbar-badge">3</span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <a href="#" class="dropdown-item">
+            <!-- Message Start -->
+            <div class="media">
+              <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+              <div class="media-body">
+                <h3 class="dropdown-item-title">
+                  Brad Diesel
+                  <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
+                </h3>
+                <p class="text-sm">Call me whenever you can...</p>
+                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+              </div>
+            </div>
+            <!-- Message End -->
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <!-- Message Start -->
+            <div class="media">
+              <img src="dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+              <div class="media-body">
+                <h3 class="dropdown-item-title">
+                  John Pierce
+                  <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
+                </h3>
+                <p class="text-sm">I got your message bro</p>
+                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+              </div>
+            </div>
+            <!-- Message End -->
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <!-- Message Start -->
+            <div class="media">
+              <img src="dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+              <div class="media-body">
+                <h3 class="dropdown-item-title">
+                  Nora Silvester
+                  <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
+                </h3>
+                <p class="text-sm">The subject goes here</p>
+                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+              </div>
+            </div>
+            <!-- Message End -->
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
+        </div>
+      </li>
+      <!-- Notifications Dropdown Menu -->
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <i class="far fa-bell"></i>
+          <span class="badge badge-warning navbar-badge">15</span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <span class="dropdown-header">15 Notifications</span>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-envelope mr-2"></i> 4 new messages
+            <span class="float-right text-muted text-sm">3 mins</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-users mr-2"></i> 8 friend requests
+            <span class="float-right text-muted text-sm">12 hours</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-file mr-2"></i> 3 new reports
+            <span class="float-right text-muted text-sm">2 days</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+          <i class="fas fa-expand-arrows-alt"></i>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
+          <i class="fas fa-th-large"></i>
+        </a>
+      </li>
+    </ul> --}}
+  </nav>
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
@@ -72,7 +220,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm">
-            <h1 class="m-0 font-weight-bold">DETAIL HASIL AUDIOMETRI</h1>
+            <h1 class="m-0 font-weight-bold">@lang('detailAudiometri.h1')</h1>
           </div><!-- /.col -->
           <div class="col-sm">
             {{-- <ol class="breadcrumb float-sm-right">
@@ -100,7 +248,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <div class="row">
                         <div class="col">
                             <div class="card">
-                                <div class="font-weight-bold h4">Telinga Kiri</div>
+                                <div class="font-weight-bold h4">@lang('detailAudiometri.kiri')</div>
                                 <div class="card-body">
                                     <div>
                                         <canvas id="ChartKiri"></canvas>
@@ -112,7 +260,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     </div>
                                     <br>
                                     <div class="card">
-                                        <div class="h5 font-weight-bold">Hasil Tes</div>
+                                        <div class="h5 font-weight-bold">@lang('detailAudiometri.hasil')</div>
                                         <div class="card-body">
                                             <p id="imgKiri"></p><br>
                                             <input type="hidden" id="hasilKiri" name="hasilKiri" placeholder="" value="{{ $detail->hasilKiri }}">
@@ -125,7 +273,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </div>
                         <div class="col">
                             <div class="card">
-                                <div class="font-weight-bold h4">Telinga Kanan</div>
+                                <div class="font-weight-bold h4">@lang('detailAudiometri.kanan')</div>
                                 <div class="card-body">
                                     <div>
                                         <canvas id="ChartKanan"></canvas>
@@ -137,7 +285,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     </div>
                                     <br>
                                     <div class="card">
-                                        <div class="h5 font-weight-bold">Hasil Tes</div>
+                                        <div class="h5 font-weight-bold">@lang('detailAudiometri.hasil')</div>
                                         <div class="card-body">
                                           <p id="imgKanan"></p><br>
                                           <input type="hidden" id="hasilKanan" name="hasilKanan" placeholder="" value="{{ $detail->hasilKanan }}">
@@ -151,7 +299,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </div>
                     <div class="row justify-content-center">
                         <div class="card">
-                            <div class="font-weight-bold h4">Hasil Keseluruhan</div>
+                            <div class="font-weight-bold h4">@lang('detailAudiometri.seluruh')</div>
                             <div class="card-body">
                               <p id="img"></p><br>
                               <input type="hidden" id="hasil" name="hasil" placeholder="" value="{{ $detail->hasil }}">
@@ -161,7 +309,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </div>
                     <div class="row justify-content-center">
                        {{-- <a href="/cetak-detail-audiometri/{{ $detail->id }}" class="btn btn-info my-2"><i class="fas fa-file-pdf"></i> Cetak Detail</a> --}}
-                       <button onclick="window.print()" class="btn btn-info my-2"><i class="fas fa-file-pdf"></i> Cetak Detail</button>
+                       <button onclick="window.print()" class="btn btn-info my-2"><i class="fas fa-file-pdf"></i> @lang('detailAudiometri.cetak')</button>
                      </div>
                 </div>
               </div>

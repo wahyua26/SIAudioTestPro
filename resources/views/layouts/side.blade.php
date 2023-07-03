@@ -73,7 +73,7 @@
           <li class="nav-item">
             <a href="/audiometri-pegawai/{{ auth()->user()->id }}" class="nav-link">
               <i class="nav-icon fas fa-file-medical "></i>
-              <p class="text-dark">Hasil Audiometri</p>
+              <p class="text-dark">@lang('side.menuAudiometri')</p>
             </a>
           </li>
           @endif
@@ -81,14 +81,14 @@
           <li class="nav-item">
             <a href="{{ route('audiometri') }}" class="nav-link">
               <i class="nav-icon fas fa-file-medical "></i>
-              <p class="text-dark">Hasil Audiometri</p>
+              <p class="text-dark">@lang('side.menuAudiometri')</p>
             </a>
           </li>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-table"></i>
               <p>
-                Data Master
+                @lang('side.menuData')
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -96,19 +96,19 @@
               <li class="nav-item">
                 <a href="{{ route('pegawai') }}" class="nav-link">
                   <i class="fas fa-users"></i>
-                  <p>Data Pegawai</p>
+                  <p>@lang('side.dataPegawai')</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{ route('jabatan') }}" class="nav-link">
                   <i class="fas fa-user-friends"></i>
-                  <p>Data Posisi Pegawai</p>
+                  <p>@lang('side.dataPosisi')</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{ route('ruang') }}" class="nav-link">
                   <i class="fas fa-building"></i>
-                  <p>Data Ruang Kerja</p>
+                  <p>@lang('side.dataRuangan')</p>
                 </a>
               </li>
             </ul>
@@ -116,7 +116,7 @@
           <li class="nav-item">
             <a href="{{ route('rekomendasi') }}" class="nav-link">
               <i class="nav-icon fas fa-clipboard "></i>
-              <p class="text-dark">Hasil Rekomendasi</p>
+              <p class="text-dark">@lang('side.menuRekomendasi')</p>
             </a>
           </li>
           <br>
@@ -124,7 +124,7 @@
         <li class="nav-item">
           <a href="{{ route('logout') }}" class="nav-link">
             <i class="fas fa-sign-out-alt"></i>
-            <p>Keluar</p>
+            <p>@lang('side.keluar')</p>
           </a>
         </li>
       </nav>
