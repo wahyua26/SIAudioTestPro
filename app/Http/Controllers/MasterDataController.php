@@ -8,6 +8,7 @@ use App\Models\Workspace;
 use Illuminate\Http\Request;
 use Illuminate\Queue\Worker;
 use Illuminate\Support\Facades\DB;
+use GuzzleHttp\Client;
 
 class MasterDataController extends Controller
 {
@@ -155,5 +156,24 @@ class MasterDataController extends Controller
         ])->delete();
 
         return redirect()->route('ruang')->with('success', 'Ruang Kerja berhasil dihapus!');
+    }
+
+    public function api()
+    {
+        $http = new Client();
+        $api = 'http://127.0.0.1:8000/api/users';
+        $response = $http->get($api, [
+            'headers' => [
+                'Content-Type' => 'application/x-www-form-urlencoded',
+            ],
+            'form_params' => [
+                // 'api-audiotest' => '3b96481852b94346d4e30c7f767ddc76c03db0eb;com.mobile.presensidemo',
+                // 'email' => $request->email,
+                // 'password' => $request->password
+            ],
+            'http_errors' => false
+        ]);
+        $api_result = json_decode((string)$response->getBody(), true);
+        dd($api_result);
     }
 }

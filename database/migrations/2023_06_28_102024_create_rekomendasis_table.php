@@ -14,8 +14,9 @@ return new class extends Migration
         Schema::create('rekomendasis', function (Blueprint $table) {
             $table->id();
             $table->integer('workspace_id');
-            $table->date('tanggal');
-            $table->time('waktu');
+            $table->string('bulan');
+            $table->integer('tahun');
+            $table->integer('tingkatBising');
             $table->float('rataHasil');
             $table->float('rataUsia');
             $table->string('rekomendasi');

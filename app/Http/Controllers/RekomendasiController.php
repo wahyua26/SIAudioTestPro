@@ -17,40 +17,55 @@ class RekomendasiController extends Controller
 {
     public function index(){
         $rekomendasi = DB::table('rekomendasis')->join('workspaces', 'workspaces.id', '=', 'rekomendasis.workspace_id')->get();
-        //dd($rekomendasi);
         return view('rekomendasi.index', ['rekomendasi' => $rekomendasi]);
     }
 
     public function mintaRekomendasi(){
         $ruang = Workspace::get();
+        $bulan = [
+            "Januari", "Februari", "Maret", "April", 
+            "Mei", "Juni", "Juli", "Agustus", 
+            "September", "Oktober", "November", "Desember"
+        ];
+        $tahun = [
+            "2024"
+        ];
         //dd($ruang)
-        return view('rekomendasi.form', ['ruang' => $ruang]);
+        return view('rekomendasi.form', ['ruang' => $ruang, 'bulan' => $bulan, 'tahun' => $tahun]);
     }
 
     public function detail(Request $request){
         //dd($request);
         $ruang = Workspace::where('workspaces.id', $request->ruangKerja)->select('workspaces.*')->first();
-        $hasil = DB::table('audiometris')->join('users', 'users.id', '=', 'audiometris.user_id')->join('jabatans', 'jabatans.id', '=', 'users.jabatan_id')->join('workspaces', 'workspaces.id', '=', 'jabatans.workspace_id')->where('workspaces.id', $request->ruangKerja)->avg('audiometris.hasil');
+        $hasil = DB::table('audiometris')->join('users', 'users.id', '=', 'audiometris.user_id')->join('jabatans', 'jabatans.id', '=', 'users.jabatan_id')->join('workspaces', 'workspaces.id', '=', 'jabatans.workspace_id')->where('workspaces.id', $request->ruangKerja)->whereRaw('MONTH(audiometris.tanggal) = ?', [$request->bulan])->whereRaw('YEAR(audiometris.tanggal) = ?', [$request->tahun])->avg('audiometris.hasil');
         $tglLahir = DB::table('users')->join('jabatans', 'jabatans.id', '=', 'users.jabatan_id')->join('workspaces', 'workspaces.id', '=', 'jabatans.workspace_id')->where('workspaces.id', $request->ruangKerja)->select('users.tglLahir')->get();
-        //dd($ruang, $hasil, $tglLahir);
+        
+        $tahun = $request->tahun;
+        $bulan = $request->bulan;
+        $namaBulan = date("F", strtotime("2024-$bulan-01"));
+        //$namaBulanTerjemahan = GoogleTranslate::trans($namaBulan, app()->getLocale());
+        $tanggal = 31;
         $usia = 0;
         foreach ($tglLahir as $p) {
             $tanggal_lahir = date('Y-m-d', strtotime($p->tglLahir));
             $birthDate = new \DateTime($tanggal_lahir);
-            $today = new \DateTime("today");
+            $today = new \DateTime(sprintf('%04d-%02d-%02d', $tahun, $bulan, $tanggal));
 
             $y = $today->diff($birthDate)->y;
             $usia = $usia + $y;
         }
-        //dd($usia/$tglLahir->count());
         $usia = $usia / $tglLahir->count();
         //dd($usia);
         //dd($ruang, $hasil, $usia);
-        return view('rekomendasi.detail', ['ruang' => $ruang, 'hasil' => $hasil, 'usia' => $usia]);
+        return view('rekomendasi.detail', ['ruang' => $ruang, 'hasil' => $hasil, 'usia' => $usia, 'bulan' => $bulan, 'tahun' => $tahun, 'namaBulan' => $namaBulan]);
     }
     
     public function model(Request $request){
         //dd($request);
+        $tahun = $request->tahun;
+        $bulan = $request->bulan;
+        $namaBulan = date("F", strtotime("2024-$bulan-01"));
+       
         $request->validate([
             'id' => 'required',
             'hasil' => 'required',
@@ -61,20 +76,20 @@ class RekomendasiController extends Controller
         //dd($ruang->nama);
 
         //loading data
-        $data = new \Phpml\Dataset\CsvDataset('D:\Kuliah\TA\siaudiotestpro\public\set.csv', features:3, headingRow:true);
+        $data = new \Phpml\Dataset\CsvDataset('D:\Kuliah\TA\siaudiotestpro\public\dataset.csv', features:3, headingRow:true);
 
         //preprocessing data
-        $dataset = new \Phpml\CrossValidation\StratifiedRandomSplit($data, testSize:0.2, seed:155);
+        $dataset = new \Phpml\CrossValidation\StratifiedRandomSplit($data, testSize:0.2, seed:42);
 
         //training
-        $classification = new \Phpml\Classification\KNearestNeighbors(k:3);
+        $classification = new \Phpml\Classification\KNearestNeighbors(k:4);
         $classification->train($dataset->getTrainSamples(), $dataset->getTrainLabels());
 
         $predicted = $classification->predict($dataset->getTestSamples());
 
         //evaluating machine learning models
         $accuracy = \Phpml\Metric\Accuracy::score($dataset->getTestLabels(), $predicted);
-        //echo 'accuracy is : ' . $accuracy;
+        //echo 'Test size 20%, seed:42, k:5, accuracy is : ' . $accuracy;
 
         $predict = $classification->predict([$ruang->bising, $request->hasil, $request->usia]);
         // echo 'accuracy is : ' . $accuracy . ' predict is: ' . $predict;
@@ -84,19 +99,15 @@ class RekomendasiController extends Controller
             $rekomendasi = 'Pengecekan ruang kerja';
         }else if($predict == 3){
             $rekomendasi = 'Pemeriksaan pegawai';
-        }else{
+        }else if($predict == 4){
             $rekomendasi = 'Pengecekan ruang kerja dan pemeriksaan pegawai';
         }
 
-        $timezone = 'Asia/Jakarta';
-        $date = new Datetime('now', new DateTimeZone($timezone));
-        $tanggal = $date->format('Y-m-d');
-        $waktu = $date->format('H:i:s');
-
         Rekomendasi::create([
             'workspace_id' => $ruang->id,
-            'tanggal' => $tanggal,
-            'waktu' => $waktu,
+            'bulan' => $namaBulan,
+            'tahun' => $tahun,
+            'tingkatBising' => $ruang->bising,
             'rataHasil' => $request->hasil,
             'rataUsia' => $request->usia,
             'rekomendasi' => $rekomendasi,
@@ -104,4 +115,5 @@ class RekomendasiController extends Controller
 
         return redirect()->route('rekomendasi')->with('success', 'Rekomendasi berhasil diminta!');
     }
+
 }

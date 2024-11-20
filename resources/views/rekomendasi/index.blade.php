@@ -68,7 +68,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Brand Logo -->
     @if (auth()->user()->status == 'admin')
     <a href="{{ route('home') }}" class="brand-link">
-      <img src="{{ asset('AdminLTE/dist/img/logo7.png') }}" alt="SIATP Logo" class="brand-image" style="opacity: 1">
+      <img src="{{ asset('AdminLTE/dist/img/group14.png') }}" alt="SIATP Logo" class="brand-image" style="opacity: 1">
       <span>
         SIATP
       </span>
@@ -76,7 +76,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     @endif
     @if (auth()->user()->status == 'pegawai')
     <a href="/homePegawai/{{ auth()->user()->id }}" class="brand-link">
-      <img src="{{ asset('AdminLTE/dist/img/logo7.png') }}" alt="SIATP Logo" class="brand-image" style="opacity: 1">
+      <img src="{{ asset('AdminLTE/dist/img/group14.png') }}" alt="SIATP Logo" class="brand-image" style="opacity: 1">
       <span>
         SIATP
       </span>
@@ -222,7 +222,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Main content -->
     <div class="content">
         <div class="row">
-            <div class="col ml-3 mt-3">
+            <div class="col">
                 <h5>{{ GoogleTranslate::trans('Keterangan : (*) Rata-Rata', app()->getLocale()) }}</h5>
             </div>
             <div class="col"></div>
@@ -239,8 +239,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <table class="table table-striped projects text-center">
             <tr>
                 <th>{{ GoogleTranslate::trans('Ruang Kerja', app()->getLocale()) }}</th>
-                <th>{{ GoogleTranslate::trans('Tanggal', app()->getLocale()) }}</th>
-                <th>{{ GoogleTranslate::trans('Waktu', app()->getLocale()) }}</th>
+                <th>{{ GoogleTranslate::trans('Bulan', app()->getLocale()) }}</th>
+                <th>{{ GoogleTranslate::trans('Tahun', app()->getLocale()) }}</th>
                 <th>{{ GoogleTranslate::trans('Tingkat Kebisingan', app()->getLocale()) }}</th>
                 <th>{{ GoogleTranslate::trans('Hasil Audiometri Pegawai', app()->getLocale()) }}*</th>
                 <th>{{ GoogleTranslate::trans('Employee Age\'s', app()->getLocale()) }}*</th>
@@ -249,9 +249,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
             @foreach ($rekomendasi as $item)
             <tr>
               <td>{{ $item->nama }}</td>
-              <td>{{ $item->tanggal }}</td>
-              <td>{{ $item->waktu }}</td>
-              <td>{{ $item->bising }} dB</td>
+              <td>{{ $item->bulan }}</td>
+              <td>{{ $item->tahun }}</td>
+              <td>{{ $item->tingkatBising }} dB</td>
               <td>{{ $item->rataHasil }}%</td>
               <td>{{ $item->rataUsia }} {{ GoogleTranslate::trans('Tahun', app()->getLocale()) }}</td>
               <td>{{ $item->rekomendasi }}</td>

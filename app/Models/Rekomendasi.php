@@ -11,8 +11,9 @@ class Rekomendasi extends Model
 
     protected $fillable = [
         'workspace_id',
-        'tanggal',
-        'waktu',
+        'bulan',
+        'tahun',
+        'tingkatBising',
         'rataHasil',
         'rataUsia',
         'rekomendasi',

@@ -2,7 +2,7 @@
     <!-- Brand Logo -->
     @if (auth()->user()->status == 'admin')
     <a href="{{ route('home') }}" class="brand-link">
-      <img src="{{ asset('AdminLTE/dist/img/logo7.png') }}" alt="SIATP Logo" class="brand-image" style="opacity: 1">
+      <img src="{{ asset('AdminLTE/dist/img/group14.png') }}" alt="SIATP Logo" class="brand-image" style="opacity: 1">
       <span>
         SIATP
       </span>
@@ -10,7 +10,7 @@
     @endif
     @if (auth()->user()->status == 'pegawai')
     <a href="/homePegawai/{{ auth()->user()->id }}" class="brand-link">
-      <img src="{{ asset('AdminLTE/dist/img/logo7.png') }}" alt="SIATP Logo" class="brand-image" style="opacity: 1">
+      <img src="{{ asset('AdminLTE/dist/img/group14.png') }}" alt="SIATP Logo" class="brand-image" style="opacity: 1">
       <span>
         SIATP
       </span>

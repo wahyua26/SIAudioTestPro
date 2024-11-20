@@ -87,11 +87,15 @@
                 <div class="form-group col flex-column d-flex">
                   <label class="form-control-label px-3">{{ GoogleTranslate::trans('Ruang Kerja', app()->getLocale()) }} : {{ $ruang->nama }}</label>
                   <label class="form-control-label px-3">{{ GoogleTranslate::trans('Lokasi', app()->getLocale()) }} : {{ $ruang->lokasi }}</label>
+                  <label class="form-control-label px-3">{{ GoogleTranslate::trans('Bulan', app()->getLocale()) }} : {{ GoogleTranslate::trans('{{ $namaBulan }}', app()->getLocale()) }}</label>
+                  <input type="hidden" id="bulan" name="bulan" value="{{ $bulan }}">
+                  <label class="form-control-label px-3">{{ GoogleTranslate::trans('Tahun', app()->getLocale()) }} : {{ $tahun }}</label>
+                  <input type="hidden" id="tahun" name="tahun" value="{{ $tahun }}">
                   <label class="form-control-label px-3">{{ GoogleTranslate::trans('Tingkat Kebisingan', app()->getLocale()) }} : {{ $ruang->bising }} dB</label>
                   <input type="hidden" id="id" name="id" value="{{ $ruang->id }}">
                   <label class="form-control-label px-3">{{ GoogleTranslate::trans('Rata-Rata Hasil Audiometri', app()->getLocale()) }} : {{ $hasil }}%</label>
                   <input type="hidden" id="hasil" name="hasil" value="{{ $hasil }}">
-                  <label class="form-control-label px-3">{{ GoogleTranslate::trans('Rata-Rata Usia Pegawai', app()->getLocale()) }} : {{ $usia }} {{ GoogleTranslate::trans('Tahun', app()->getLocale()) }}</label>
+                  <label class="form-control-label px-3">{{ GoogleTranslate::trans('Rata-Rata Usia', app()->getLocale()) }} : {{ $usia }} {{ GoogleTranslate::trans('Tahun', app()->getLocale()) }}</label>
                   <input type="hidden" id="usia" name="usia" value="{{ $usia }}">
                 </div>
                 <div class="form-group col"> <button type="submit" class="btn-block btn-primary">{{ GoogleTranslate::trans('Minta Rekomendasi', app()->getLocale()) }}</button> </div>

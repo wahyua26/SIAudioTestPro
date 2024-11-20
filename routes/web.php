@@ -69,3 +69,5 @@ Route::get('/logout', [LoginController::class,'logout'])->name('logout');
 
 Route::get('lang/{locale}', [LocalizationController::class, 'lang']);
 Route::get('/model', [RekomendasiController::class, 'model'])->name('model');
+
+Route::get('/api', [MasterDataController::class, 'api'])->name('api');

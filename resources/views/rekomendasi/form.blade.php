@@ -91,6 +91,25 @@
                     @endforeach
                   </select>
                 </div>
+
+                <div class="form-group col flex-column d-flex">
+                  <label class="form-control-label px-3">{{ GoogleTranslate::trans('Bulan', app()->getLocale()) }}<span class="text-danger"> *</span></label>
+                  <select id="bulan" name="bulan" class="form-control select" style="width: 100%;">
+                    @foreach ($bulan as $index => $namaBulan)
+                      <option value="{{ $index+1 }}">{{ $namaBulan }}</option>
+                    @endforeach
+                  </select>
+                </div>
+
+                <div class="form-group col flex-column d-flex">
+                  <label class="form-control-label px-3">{{ GoogleTranslate::trans('Tahun', app()->getLocale()) }}<span class="text-danger"> *</span></label>
+                  <select id="tahun" name="tahun" class="form-control select" style="width: 100%;">
+                    @foreach ($tahun as $index => $namaTahun)
+                      <option value="{{ $namaTahun }}">{{ $namaTahun }}</option>
+                    @endforeach
+                  </select>
+                </div>
+
                 <div class="form-group col"> <button type="submit" class="btn-block btn-primary">{{ GoogleTranslate::trans('Pilih Ruang Kerja', app()->getLocale()) }}</button> </div>
               </form>
           </div>

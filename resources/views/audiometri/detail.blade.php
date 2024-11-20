@@ -250,7 +250,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <div class="card">
                                 <div class="font-weight-bold h4">@lang('detailAudiometri.kiri')</div>
                                 <div class="card-body">
-                                    <div>
+                                    {{-- <div>
                                         <canvas id="ChartKiri"></canvas>
                                         <input type="hidden" id="kiri1" name="kiri1" placeholder="" value="{{ $kiri1 }}">
                                         <input type="hidden" id="kiri2" name="kiri2" placeholder="" value="{{ $kiri2 }}">
@@ -258,14 +258,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <input type="hidden" id="kiri4" name="kiri4" placeholder="" value="{{ $kiri4 }}">
                                         <input type="hidden" id="kiri5" name="kiri5" placeholder="" value="{{ $kiri5 }}">
                                     </div>
-                                    <br>
+                                    <br> --}}
                                     <div class="card">
                                         <div class="h5 font-weight-bold">@lang('detailAudiometri.hasil')</div>
                                         <div class="card-body">
                                             <p id="imgKiri"></p><br>
                                             <input type="hidden" id="hasilKiri" name="hasilKiri" placeholder="" value="{{ $detail->hasilKiri }}">
-                                            <div class="text-center h5 font-weight-bold">{{ $detail->hasilKiri }}% ({{ $detail->keteranganKiri }})</div>
-                                            <div class="text-center font-weight-bold">Telinga anda dalam keadaan baik, tetap jaga selalu kesehatan telinga anda</div><br>
+                                            <div class="text-center h5 font-weight-bold">{{ $detail->hasilKiri }}% ({{ $detail->keteranganKiri }})</div>                                            
                                         </div>
                                     </div>
                                 </div>
@@ -275,7 +274,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <div class="card">
                                 <div class="font-weight-bold h4">@lang('detailAudiometri.kanan')</div>
                                 <div class="card-body">
-                                    <div>
+                                    {{-- <div>
                                         <canvas id="ChartKanan"></canvas>
                                         <input type="hidden" id="kanan1" name="kanan1" placeholder="" value="{{ $kanan1 }}">
                                         <input type="hidden" id="kanan2" name="kanan2" placeholder="" value="{{ $kanan2 }}">
@@ -283,14 +282,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <input type="hidden" id="kanan4" name="kanan4" placeholder="" value="{{ $kanan4 }}">
                                         <input type="hidden" id="kanan5" name="kanan5" placeholder="" value="{{ $kanan5 }}">
                                     </div>
-                                    <br>
+                                    <br> --}}
                                     <div class="card">
                                         <div class="h5 font-weight-bold">@lang('detailAudiometri.hasil')</div>
                                         <div class="card-body">
                                           <p id="imgKanan"></p><br>
                                           <input type="hidden" id="hasilKanan" name="hasilKanan" placeholder="" value="{{ $detail->hasilKanan }}">
                                           <div class="text-center h5 font-weight-bold">{{ $detail->hasilKanan }}% ({{ $detail->keteranganKanan }})</div>
-                                          <div class="text-center font-weight-bold">Telinga anda dalam keadaan baik, tetap jaga selalu kesehatan telinga anda</div><br>
                                         </div>
                                     </div>
                                 </div>
@@ -385,7 +383,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       document.getElementById('img').innerHTML = "<img src=\"{{ asset('AdminLTE/dist/img/gangguankomunikasi.png') }}\">";
     }
 </script>
-
+{{-- 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
@@ -442,7 +440,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       }
     }
   });
-</script>
+</script> --}}
 <!-- jQuery -->
 @include('layouts.script')
 </body>
