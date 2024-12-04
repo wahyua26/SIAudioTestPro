@@ -83,7 +83,7 @@ class AudiometriController extends Controller
         $to6 = date('2024-06-30');
         $juni = Audiometri::whereBetween('tanggal', [$from6, $to6])->avg('hasil');
         //dd($audiometri->count());
-        $rekap = DB::table('rekomendasis')->join('workspaces', 'workspaces.id', '=', 'rekomendasis.workspace_id')->orderBy('tanggal','desc')->paginate(3);
+        $rekap = DB::table('rekomendasis')->join('workspaces', 'workspaces.id', '=', 'rekomendasis.workspace_id')->orderBy('tahun','desc')->paginate(3);
         //dd($rekap);
         return view('home', [ 'rekap' => $rekap, 'audiometri' => $audiometri->count(), 'rekomendasi' => $rekomendasi->count(), 'januari' => $januari, 'februari' => $februari, 'maret' => $maret, 'april' => $april, 'mei' => $mei, 'juni' => $juni ]);
     }

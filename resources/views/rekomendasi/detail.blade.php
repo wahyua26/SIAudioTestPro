@@ -87,7 +87,7 @@
                 <div class="form-group col flex-column d-flex">
                   <label class="form-control-label px-3">{{ GoogleTranslate::trans('Ruang Kerja', app()->getLocale()) }} : {{ $ruang->nama }}</label>
                   <label class="form-control-label px-3">{{ GoogleTranslate::trans('Lokasi', app()->getLocale()) }} : {{ $ruang->lokasi }}</label>
-                  <label class="form-control-label px-3">{{ GoogleTranslate::trans('Bulan', app()->getLocale()) }} : {{ GoogleTranslate::trans('{{ $namaBulan }}', app()->getLocale()) }}</label>
+                  <label class="form-control-label px-3">{{ GoogleTranslate::trans('Bulan', app()->getLocale()) }} : {{ $namaBulan }}</label>
                   <input type="hidden" id="bulan" name="bulan" value="{{ $bulan }}">
                   <label class="form-control-label px-3">{{ GoogleTranslate::trans('Tahun', app()->getLocale()) }} : {{ $tahun }}</label>
                   <input type="hidden" id="tahun" name="tahun" value="{{ $tahun }}">
